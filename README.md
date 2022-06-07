@@ -1,4 +1,4 @@
-# Webpack Starter Kit
+#Amanda's Travel Tracker
 
 ## Clone This Repo
 
