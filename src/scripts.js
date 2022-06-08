@@ -12,75 +12,35 @@ import './images/turing-logo.png'
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
-let globalData;
 
-let travelersData = getTravelers();
-console.log("Original promise", travelersData)
+//GLOBAL VARIABLES
+var globalData;
+var thing;
 
-let resolvedData = Promise.resolve(travelersData);
-console.log("Resolved promise", resolvedData)
+//EVENT LISTENERS
+window.addEventListener('load', resolvePromise);
+
+//EVENT HANDLERS
 
 function resolvePromise() {
   getTravelers().then((data) => {
-  // test();
-  console.log("data", data)
-  globalData = data;
-  test();
-  return data;
-})
+    globalData = data;
+    test();
+  })
 }
 
-console.log("28", resolvePromise())
+// console.log("28", resolvePromise())
 
 
-console.log("global data", globalData);
+console.log("globalData outside of method", globalData);
 //
 // console.log(globalData)
 
 function test() {
-  console.log("test", globalData);
+  console.log("globalData in method", globalData.travelers[0]);
 }
 
-test();
 
 
-
-
-
-
-
-
-
-
-
-
-
-//IGNORE
-//======================//
-
-
-// let anotherPromise = getTravelers().then(traveler => console.log(traveler)));
-//
-// console.log("first promise", anotherPromise)
-//
-// let travelersPromise = Promise.resolve(anotherPromise);
-//
-// console.log("resolved promise", travelersPromise);
-//
-// let expectedData;
-//
-//
-// travelersPromise.then((data) => {
-//   setGlobalData(data);
-// })
-//
-// function setGlobalData(data) {
-//   expectedData = data;
-// }
-//
-// setGlobalData(travelersPromise);
-//
-// //this is showing undefined.
-// console.log("expected data final", expectedData);
-//
-// // .then((res) => getTravelers().then(traveler => console.log(traveler)));
+// Seems like I'm not using this
+// let resolvedData = Promise.resolve(travelersData);
