@@ -1,5 +1,5 @@
 #Amanda's Travel Tracker
-#A tracker for travels
+#A Tracker for Travelers
 
 ## Clone This Repo
 
