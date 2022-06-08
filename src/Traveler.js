@@ -2,6 +2,7 @@ class Traveler {
   constructor(singleTraveler) {
     this.id = singleTraveler.id;
     this.name = singleTraveler.name;
+    this.travelerType = singleTraveler.travelerType;
   }
 
   getTravelerName() {
