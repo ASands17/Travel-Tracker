@@ -1,7 +1,7 @@
 // This is the JavaScript entry file - your code begins here
 // Do not delete or rename this file ********
 
-import {getTravelers, getTrips, getDetinations} from './API-fetch';
+import {getTravelers, getTrips, getDestinations} from './API-fetch';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
@@ -14,8 +14,8 @@ import './images/turing-logo.png'
 
 
 //GLOBAL VARIABLES
-var globalData;
-var thing;
+var globalTravelers, globalTrips, globalDestinations;
+
 
 //EVENT LISTENERS
 window.addEventListener('load', resolvePromise);
@@ -23,22 +23,33 @@ window.addEventListener('load', resolvePromise);
 //EVENT HANDLERS
 
 function resolvePromise() {
-  getTravelers().then((data) => {
-    globalData = data;
-    test();
+  var travelersPromise = getTravelers();
+  var tripsPromise = getTrips();
+  var destinationsPromise = getDestinations();
+  Promise.all([travelersPromise, tripsPromise, destinationsPromise])
+  .then((values) => {
+    globalTravelers = values[0];
+    globalTrips = values[1];
+    globalDestinations = values[2];
+    startFnOffHere();
+    //I guess all methods have to start here?
   })
 }
 
 // console.log("28", resolvePromise())
 
 
-console.log("globalData outside of method", globalData);
+// console.log("globalData outside of method", globalData);
 //
 // console.log(globalData)
 
-function test() {
-  console.log("globalData in method", globalData.travelers[0]);
+function startFnOffHere() {
+  console.log("globalData in method", globalTravelers, globalTrips, globalDestinations);
 }
+
+
+
+
 
 
 
