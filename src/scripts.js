@@ -45,6 +45,12 @@ function resolvePromise() {
 
 function startFnOffHere() {
   console.log("globalData in method", globalTravelers, globalTrips, globalDestinations);
+  // console.log(globalTrips.map(trip => trip.date));
+  // let sortedTrips = globalTrips.sort((a, b) => {
+  //   return b.date - a.date;
+  // })
+  // console.log("sortedTrips", sortedTrips);
+  // return sortedTrips;
 }
 
 
