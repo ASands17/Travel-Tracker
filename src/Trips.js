@@ -23,22 +23,3 @@ class Trips{
 }
 
 export default Trips;
-
-//Traveler
-// "id": 1,
-// "name": "Ham Leadbeater",
-// "travelerType": "relaxer"
-
-//Trip
-// "id": 117,
-// "userID": 1,
-// "destinationID": 28,
-// "travelers": 3,
-// "date": "2021/01/09",
-// "duration": 15,
-// "status": "approved",
-// "suggestedActivities": []
-
-// let userTrips = new Trips(1, apiTripData);
-//
-// let allUserTrips = userTrips.getTravelerTrips(1, apiTripData);
