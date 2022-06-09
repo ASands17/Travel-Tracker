@@ -10,13 +10,15 @@ class Trips{
     let travelerTrips = allTripsData.filter(trip => {
       return trip.userID === travelerId;
     })
+      return travelerTrips;
   }
 
   getTravelerPendingTrips(travelerId, allTripsData) {
-    let travelerTrips = getTravelerTrips(travelerId, allTripsData);
+    let travelerTrips = this.getTravelerTrips(travelerId, allTripsData);
     let pendingTrips = travelerTrips.filter(trip => {
       return trip.status === "pending";
     })
+    return pendingTrips;
   }
 }
 
@@ -37,6 +39,6 @@ export default Trips;
 // "status": "approved",
 // "suggestedActivities": []
 
-let userTrips = new Trips(1, apiTripData);
-
-let allUserTrips = userTrips.getTravelerTrips(1, apiTripData);
+// let userTrips = new Trips(1, apiTripData);
+//
+// let allUserTrips = userTrips.getTravelerTrips(1, apiTripData);

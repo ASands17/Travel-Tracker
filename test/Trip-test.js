@@ -1,2 +1,2 @@
 import { expect } from "chai";
-import Trips from "../src/Trips";
+import Trip from "../src/Trip";

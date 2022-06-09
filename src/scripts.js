@@ -31,6 +31,8 @@ function resolvePromise() {
     globalTravelers = values[0];
     globalTrips = values[1];
     globalDestinations = values[2];
+
+
     startFnOffHere();
     //I guess all methods have to start here?
   })
@@ -39,7 +41,7 @@ function resolvePromise() {
 // console.log("28", resolvePromise())
 
 
-// console.log("globalData outside of method", globalData);
+console.log("globalData outside of method", globalTravelers);
 //
 // console.log(globalData)
 
