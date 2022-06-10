@@ -11,11 +11,11 @@ class Trip {
   }
 
   determineDestination(destinationId, destinationDataAll) {
-    let tripDestination = destinationDataAll.filter(destinationObj => {
+    let tripDestination = destinationDataAll.find(destinationObj => {
       return destinationObj.id === destinationId;
     })
-    this.destinationObj = tripDestination[0];
-    return tripDestination[0];
+    this.destinationObj = tripDestination;
+    return tripDestination;
   }
 
   calculateCost(destinationObj) {

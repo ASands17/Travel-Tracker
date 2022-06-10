@@ -114,8 +114,6 @@ describe("Trip", () => {
     );
   });
   it("should calculate the trip cost", () => {
-    // console.log("data", destinationData)
-    // console.log("data fn", trip1.determineDestination(trip1.destinationId, destinationData))
     expect(trip1.calculateCost(trip1.determineDestination(trip1.destinationId, destinationData))).to.equal(5290);
     // expect(trip2.calculateCost(destinationData)).to.equal("New York, New York");
   });
