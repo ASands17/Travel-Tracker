@@ -238,7 +238,7 @@ describe("Trips", () => {
   });
 
   it("should get all of a Traveler's trips by ID", function () {
-    expect(trips3.getTravelerTrips(traveler3Id, allTripsData)).to.deep.equal([
+    expect(trips3.getTravelerTrips()).to.deep.equal([
       {
       "id": 3,
       "userID": 3,
@@ -273,7 +273,7 @@ describe("Trips", () => {
     });
 
     it("should get all pending trips for the Traveler", function () {
-      expect(trips3.getTravelerPendingTrips(traveler3Id, allTripsData)).to.deep.equal([
+      expect(trips3.getTravelerPendingTrips()).to.deep.equal([
         {
         "id": 9,
         "userID": 3,

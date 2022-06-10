@@ -8,15 +8,15 @@ class Trips{
   }
 
   //will get array of all a user's trips
-  getTravelerTrips(travelerId, allTripsData) {
-    let travelerTrips = allTripsData.filter(trip => {
-      return trip.userID === travelerId;
+  getTravelerTrips() {
+    let travelerTrips = this.allTrips.filter(trip => {
+      return trip.userID === this.travelerId;
     })
       return travelerTrips;
   }
 
-  getTravelerPendingTrips(travelerId, allTripsData) {
-    let travelerTrips = this.getTravelerTrips(travelerId, allTripsData);
+  getTravelerPendingTrips() {
+    let travelerTrips = this.getTravelerTrips();
     let pendingTrips = travelerTrips.filter(trip => {
       return trip.status === "pending";
     })
@@ -24,7 +24,7 @@ class Trips{
   }
 
   getTravelerPresentTrips() {
-    let travelerTrips = this.getTravelerTrips(travelerId, allTripsData);
+    let travelerTrips = this.getTravelerTrips();
   }
 
   //this gives me an array of trip instances
