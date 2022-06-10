@@ -6,6 +6,7 @@ class Trip {
     this.date = tripObj.date;
     this.duration = tripObj.duration;
     this.status = tripObj.status;
+    this.destinationObj;
     // this.suggestedActivities = tripObj.suggestedActivities;
   }
 
@@ -13,14 +14,15 @@ class Trip {
     let tripDestination = destinationDataAll.filter(destinationObj => {
       return destinationObj.id === destinationId;
     })
-    return tripDestination[0].destination;
+    this.destinationObj = tripDestination[0];
+    return tripDestination[0];
   }
 
-  calculateCost(tripObj, destinationDataAll) {
-    let flightCost = tripObj.travelers * destinationDataAll.estimatedFlightCostPerPerson;
-    let lodgingCost = tripObj.duration * destinationDataAll.estimatedLodgingCostPerDay;
+  calculateCost(destinationObj) {
+    let flightCost = this.travelers * destinationObj.estimatedFlightCostPerPerson;
+    let lodgingCost = this.duration * destinationObj.estimatedLodgingCostPerDay;
     let totalCost = flightCost + lodgingCost;
-    return totalTripCost;
+    return totalCost;
   }
 }
 export default Trip;

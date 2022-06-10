@@ -91,9 +91,32 @@ describe("Trip", () => {
   });
 
   it("should determine the trip destination", () => {
-    console.log("trip1 ID", trip1.destinationId)
-    console.log("fn ", trip1.determineDestination(trip1.destinationId, destinationData))
-    expect(trip1.determineDestination(trip1.destinationId, destinationData)).to.equal("Castries, St Lucia");
-
+    expect(trip1.determineDestination(trip1.destinationId, destinationData)).to.deep.equal(
+      {
+      "id": 49,
+      "destination": "Castries, St Lucia",
+      "estimatedLodgingCostPerDay": 650,
+      "estimatedFlightCostPerPerson": 90,
+      "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
+      "alt": "aerial photography of rocky mountain under cloudy sky"
+      }
+    );
+    expect(trip1.destinationObj).to.deep.equal(
+      {
+      "id": 49,
+      "destination": "Castries, St Lucia",
+      "estimatedLodgingCostPerDay": 650,
+      "estimatedFlightCostPerPerson": 90,
+      "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
+      "alt": "aerial photography of rocky mountain under cloudy sky"
+      }
+    // expect(trip2.determineDestination(trip2.destinationId, destinationData)).to.equal("New York, New York");
+    );
+  });
+  it("should calculate the trip cost", () => {
+    // console.log("data", destinationData)
+    // console.log("data fn", trip1.determineDestination(trip1.destinationId, destinationData))
+    expect(trip1.calculateCost(trip1.determineDestination(trip1.destinationId, destinationData))).to.equal(5290);
+    // expect(trip2.calculateCost(destinationData)).to.equal("New York, New York");
   });
 });
