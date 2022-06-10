@@ -18,11 +18,11 @@ var globalTravelers, globalTrips, globalDestinations;
 
 
 //EVENT LISTENERS
-window.addEventListener('load', resolvePromise);
+window.addEventListener('load', getGlobalDataFromAPI);
 
 //EVENT HANDLERS
 
-function resolvePromise() {
+function getGlobalDataFromAPI() {
   var travelersPromise = getTravelers();
   var tripsPromise = getTrips();
   var destinationsPromise = getDestinations();
@@ -31,7 +31,6 @@ function resolvePromise() {
     globalTravelers = values[0];
     globalTrips = values[1];
     globalDestinations = values[2];
-
 
     startFnOffHere();
     //I guess all methods have to start here?
@@ -46,17 +45,17 @@ console.log("globalData outside of method", globalTravelers);
 // console.log(globalData)
 
 function startFnOffHere() {
-  // let trips = new Trips(1, globalTrips["trips"]);
-  //
-  // let userTrips = trips.getallTrips();
-  // console.log(userTrips)
   console.log("globalData in method", globalTravelers, globalTrips, globalDestinations);
-  // console.log(globalTrips.map(trip => trip.date));
-  // let sortedTrips = globalTrips.sort((a, b) => {
-  //   return b.date - a.date;
-  // })
-  // console.log("sortedTrips", sortedTrips);
-  // return sortedTrips;
+//   let trips = new Trips(1, globalTrips["trips"]);
+//
+//   let userTrips = trips.getallTrips();
+//   console.log(userTrips)
+//   console.log(globalTrips.map(trip => trip.date));
+//   let sortedTrips = globalTrips.sort((a, b) => {
+//     return b.date - a.date;
+//   })
+//   console.log("sortedTrips", sortedTrips);
+//   return sortedTrips;
 }
 
 
