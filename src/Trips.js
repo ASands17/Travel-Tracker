@@ -23,10 +23,9 @@ class Trips{
     return pendingTrips;
   }
 
-  // getTravelerPresentTrips() {
-  //   let travelerTrips = this.getTravelerTrips(travelerId, allTripsData);
-  //
-  // }
+  getTravelerPresentTrips() {
+    let travelerTrips = this.getTravelerTrips(travelerId, allTripsData);
+  }
 
   getallTrips() {
     return this.getTravelerTrips(this.travelerId, this.allTrips).map(tripObj => new Trip(tripObj))
