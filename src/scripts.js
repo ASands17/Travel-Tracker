@@ -8,7 +8,7 @@ import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 import './images/turing-logo.png'
-
+import Trips from './Trips'
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
@@ -46,6 +46,10 @@ console.log("globalData outside of method", globalTravelers);
 // console.log(globalData)
 
 function startFnOffHere() {
+  // let trips = new Trips(1, globalTrips["trips"]);
+  //
+  // let userTrips = trips.getallTrips();
+  // console.log(userTrips)
   console.log("globalData in method", globalTravelers, globalTrips, globalDestinations);
   // console.log(globalTrips.map(trip => trip.date));
   // let sortedTrips = globalTrips.sort((a, b) => {
