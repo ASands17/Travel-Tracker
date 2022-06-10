@@ -5,6 +5,7 @@ describe("Trip", () => {
   let singleTrip1;
   let singleTrip2;
   let trip1, trip2;
+  let destinationData;
 
   beforeEach(() => {
     singleTrip1 =
@@ -31,8 +32,27 @@ describe("Trip", () => {
       "suggestedActivities": []
       },
 
-    trip1 = new Trip(singleTrip1);
-    trip2 = new Trip(singleTrip2);
+      destinationData =[
+      {
+        "id": 49,
+        "destination": "Castries, St Lucia",
+        "estimatedLodgingCostPerDay": 650,
+        "estimatedFlightCostPerPerson": 90,
+        "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
+        "alt": "aerial photography of rocky mountain under cloudy sky"
+      },
+      {
+        "id": 25,
+        "destination": "New York, New York",
+        "estimatedLodgingCostPerDay": 175,
+        "estimatedFlightCostPerPerson": 200,
+        "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+        "alt": "people crossing the street during the day surrounded by tall buildings and advertisements"
+      }
+    ]
+
+    trip1 = new Trip(singleTrip1, destinationData);
+    trip2 = new Trip(singleTrip2, destinationData);
   });
 
   it("should be an instance of Trip", () => {
@@ -45,28 +65,35 @@ describe("Trip", () => {
     expect(trip2.id).to.equal(2);
   });
 
-  it("should have a destination ID", function () {
+  it("should have a destination ID", () => {
     expect(trip1.destinationId).to.equal(49);
     expect(trip2.destinationId).to.equal(25);
   });
 
-  it("should have the number of travelers", function () {
+  it("should have the number of travelers", () => {
     expect(trip1.travelers).to.equal(1);
     expect(trip2.travelers).to.equal(5);
   });
 
-  it("should have the start date of the trip", function () {
+  it("should have the start date of the trip", () => {
     expect(trip1.date).to.equal("2022/09/16");
     expect(trip2.date).to.equal("2022/10/04");
   });
 
-  it("should have the trip duration", function () {
+  it("should have the trip duration", () => {
     expect(trip1.duration).to.equal(8);
     expect(trip2.duration).to.equal(18);
   });
 
-  it("should have the status", function () {
+  it("should have the status", () => {
     expect(trip1.status).to.equal("pending");
     expect(trip2.status).to.equal("approved");
+  });
+
+  it("should determine the trip destination", () => {
+    console.log("trip1 ID", trip1.destinationId)
+    console.log("fn ", trip1.determineDestination(trip1.destinationId, destinationData))
+    expect(trip1.determineDestination(trip1.destinationId, destinationData)).to.equal("Castries, St Lucia");
+
   });
 });

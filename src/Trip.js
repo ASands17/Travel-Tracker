@@ -10,9 +10,10 @@ class Trip {
   }
 
   determineDestination(destinationId, destinationDataAll) {
-    let tripDestination = destinationDataAll.find(destinationObj => {
+    let tripDestination = destinationDataAll.filter(destinationObj => {
       return destinationObj.id === destinationId;
     })
+    return tripDestination[0].destination;
   }
 
   calculateCost(tripObj, destinationDataAll) {
@@ -21,6 +22,5 @@ class Trip {
     let totalCost = flightCost + lodgingCost;
     return totalTripCost;
   }
-
 }
 export default Trip;
