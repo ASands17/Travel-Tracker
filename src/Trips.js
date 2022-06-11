@@ -5,6 +5,9 @@ class Trips{
   constructor(travelerId, allTripsData, allDestinationData){
     this.travelerId = travelerId;
     this.allTrips = allTripsData;
+    this.trips;
+
+    this.getTripInstances();
   }
 
   //will get array of all a user's trips
@@ -15,26 +18,38 @@ class Trips{
       return travelerTrips;
   }
 
-  getTravelerPendingTrips() {
-    let travelerTrips = this.getTravelerTrips();
-    let pendingTrips = travelerTrips.filter(trip => {
-      return trip.status === "pending";
-    })
-    return pendingTrips;
-  }
-
-  getTravelerPresentTrips() {
-    let travelerTrips = this.getTravelerTrips();
-  }
-
-  //this gives me an array of trip instances
-  //this means all of these trips would have methods from trip available
-  //confused about this in params
-  //confused about how exactly this helps?
   getTripInstances() {
-    return this.getTravelerTrips(this.travelerId, this.allTrips)
-    .map(tripObj => new Trip(tripObj))
+    this.trips = this.getTravelerTrips()
+      .map(tripObj => new Trip(tripObj));
+    return this.trips;
   }
+
+
+  // This test for below is now failing.
+
+  getTravelerPendingTrips() {
+  let pendingTrips = this.trips.filter(trip => {
+    return trip.status === "pending";
+  })
+  return pendingTrips;
+}
+
+  getCostOfAllTrips() {
+    let cost = 0;
+    this.trips.forEach((item, i) => {
+      cost += item.calculateCost()
+    });
+    return cost;
+  }
+
+  // getTravelerPresentTrips() {
+  //   let travelerTrips = this.getTravelerTrips();
+  // }
+
+  // getTripInstances() {
+  //   return this.getTravelerTrips(this.travelerId, this.allTrips)
+  //   .map(tripObj => new Trip(tripObj))
+  // }
 
 //could I do this same thing?
   // getDestinationInstances() {
