@@ -8,9 +8,14 @@ class Trip {
     this.status = tripObj.status;
     this.destinationObj;
     this.isCurrent;
+    this.isUpcoming;
+    this.isPast;
+
+    //maybe refactor below to be one method
 
     this.checkIfCurrentTrip();
-    // this.suggestedActivities = tripObj.suggestedActivities;
+    this.checkIfUpcomingTrip();
+    this.checkIfPast();
   }
 
   determineDestination(destinationId, destinationDataAll) {
@@ -32,22 +37,36 @@ class Trip {
   checkIfCurrentTrip() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-
-
     const endDate = new Date(this.date);
-
-
     endDate.setDate(endDate.getDate() + this.duration);
-    //setDate can take a UTC code and a number and add them up
-    //the method is able to take in both parameters and return a Date
-    //if it were minutes or seconds it would be different
-    //setDate gets an actual date, getDate is getting the UTC code Date
-    //That's why we wrap everything in setDate
+    if(new Date(this.date) <= today && today <= endDate) {
+      this.isCurrent = true;
+    } else {
+      this.isCurrent = false;
+    }
+  }
 
-    // if(new Date(this.date) < today && )
+  checkIfUpcomingTrip() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let tripDate = new Date(this.date);
+    if (today < tripDate && this.status != "pending") {
+      this.isUpcoming = true;
+    } else {
+      this.isUpcoming = false;
+    }
+  }
 
-
-
+  checkIfPast() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    let tripDate = new Date(this.date);
+    if (today > tripDate && !this.isCurrent) {
+      this.isPast = true;
+    } else {
+      this.isPast = false;
+    }
+  console.log("isPast", this.isPast)
   }
 }
 export default Trip;

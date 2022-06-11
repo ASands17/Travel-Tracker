@@ -14,10 +14,12 @@ describe("Trip", () => {
       "userID": 1,
       "destinationID": 49,
       "travelers": 1,
-      "date": "2022/09/16",
+      // "date": "2022/09/16",
+      "date": "2022/06/05",
       "duration": 8,
       "status": "pending",
-      "suggestedActivities": []
+      "suggestedActivities": [],
+      "isCurrent": "",
       },
 
       singleTrip2 =
@@ -26,10 +28,12 @@ describe("Trip", () => {
       "userID": 2,
       "destinationID": 25,
       "travelers": 5,
-      "date": "2022/10/04",
+      // "date": "2022/10/04",
+      "date": "2022/04/18",
       "duration": 18,
       "status": "approved",
-      "suggestedActivities": []
+      "suggestedActivities": [],
+      "isCurrent": "",
       },
 
       destinationData =[
@@ -113,8 +117,15 @@ describe("Trip", () => {
     // expect(trip2.determineDestination(trip2.destinationId, destinationData)).to.equal("New York, New York");
     );
   });
+
   it("should calculate the trip cost", () => {
     expect(trip1.calculateCost(trip1.determineDestination(trip1.destinationId, destinationData))).to.equal(5819);
     // expect(trip2.calculateCost(destinationData)).to.equal("New York, New York");
   });
+
+  // it("should update property to show if trip is current", () => {
+  //   expect(trip1.isCurrent.to.equal(true);
+  // })
+
+
 });
