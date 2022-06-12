@@ -12,7 +12,6 @@ class Trip {
     this.isPast;
 
     //maybe refactor below to be one method
-
     this.checkIfCurrentTrip();
     this.checkIfUpcomingTrip();
     this.checkIfPast();
@@ -29,6 +28,7 @@ class Trip {
   calculateCost() {
     let flightCost = this.travelers * this.destinationObj.estimatedFlightCostPerPerson;
     let lodgingCost = this.duration * this.destinationObj.estimatedLodgingCostPerDay;
+    // console.log("flight in trip", this.destinationObj.estimatedFlightCostPerPerson)
     let totalCost = flightCost + lodgingCost;
     let totalCostWithAgentFee = totalCost + (totalCost * .10);
     return totalCostWithAgentFee;
@@ -66,7 +66,7 @@ class Trip {
     } else {
       this.isPast = false;
     }
-  console.log("isPast", this.isPast)
+  // console.log("isPast", this.isPast)
   }
 }
 export default Trip;

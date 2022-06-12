@@ -6,17 +6,12 @@ class Trips{
     this.travelerId = travelerId;
     this.allTrips = allTripsData;
     this.trips;
+    this.allDestinationData = allDetinationData;
 
     this.getTripInstances();
   }
 
   //will get array of all a user's trips
-  getTravelerTrips() {
-    let travelerTrips = this.allTrips.filter(trip => {
-      return trip.userID === this.travelerId;
-    })
-      return travelerTrips;
-  }
 
   getTripInstances() {
     this.trips = this.getTravelerTrips()
@@ -24,38 +19,40 @@ class Trips{
     return this.trips;
   }
 
-
-  // This test for below is now failing.
-
-  getTravelerPendingTrips() {
-  let pendingTrips = this.trips.filter(trip => {
-    return trip.status === "pending";
-  })
-  return pendingTrips;
-}
-
-  getCostOfAllTrips() {
-    let cost = 0;
-    this.trips.forEach((item, i) => {
-      cost += item.calculateCost()
-    });
-    return cost;
+  getTravelerTrips() {
+    let travelerTrips = this.allTrips.filter(trip => {
+      return trip.userID === this.travelerId;
+    })
+      return travelerTrips;
   }
 
-  // getTravelerPresentTrips() {
-  //   let travelerTrips = this.getTravelerTrips();
-  // }
+  //Why is this not working????????
 
-  // getTripInstances() {
-  //   return this.getTravelerTrips(this.travelerId, this.allTrips)
-  //   .map(tripObj => new Trip(tripObj))
-  // }
+  //I have access to array of user trips in this.trips
+  //That means I have access to calculate cost
+  //must first determine destination for each trip
+  //then I should be able to calculate cost since destination will be
+  //availiable to me.
 
-//could I do this same thing?
-  // getDestinationInstances() {
-  //   return this.getTravelerTrips(this.travelerId, this.destinationData)
-  //   .map(tripObj => new Destination(tripObj))
-  // }
+  //so why is this giving me undefined???
+
+  getCostOfApprovedTrips() {
+    let destinationTrips = this.trips.map(trip => {
+      return trip.determineDestination(trip.destinationObj.id, this.allDestinationData);
+    });
+
+    let approvedTrips = destinationTrips.filter(trip => {
+      return trip.status === "approved";
+    });
+    console.log("all trips", approvedTrips)
+      let totalCost = approvedTrips.reduce((sum, trip) => {
+        // console.log("trip", trip);
+        sum += trip.calculateCost();
+        return sum;
+      }, 0);
+      console.log("tot cost", totalCost)
+    return totalCost;
+  }
 }
 
 export default Trips;

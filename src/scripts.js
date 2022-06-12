@@ -4,18 +4,17 @@
 import {getTravelers, getTrips, getDestinations} from './API-fetch';
 
 // An example of how you tell webpack to use a CSS (SCSS) file
-import './css/styles.css';
+// import './css/styles.css';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
-import './images/turing-logo.png'
-import Trips from './Trips'
+// import './images/turing-logo.png'
+// import Trips from './Trips'
 
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 
 //GLOBAL VARIABLES
 var globalTravelers, globalTrips, globalDestinations;
-
 
 //EVENT LISTENERS
 window.addEventListener('load', getGlobalDataFromAPI);
@@ -31,38 +30,11 @@ function getGlobalDataFromAPI() {
     globalTravelers = values[0];
     globalTrips = values[1];
     globalDestinations = values[2];
-
     startFnOffHere();
-    //I guess all methods have to start here?
+    //Start DOM manip from fn above (will rename)
   })
 }
 
-// console.log("28", resolvePromise())
-
-
-console.log("globalData outside of method", globalTravelers);
-//
-// console.log(globalData)
-
 function startFnOffHere() {
   console.log("globalData in method", globalTravelers, globalTrips, globalDestinations);
-//   let trips = new Trips(1, globalTrips["trips"]);
-//
-//   let userTrips = trips.getallTrips();
-//   console.log(userTrips)
-//   console.log(globalTrips.map(trip => trip.date));
-//   let sortedTrips = globalTrips.sort((a, b) => {
-//     return b.date - a.date;
-//   })
-//   console.log("sortedTrips", sortedTrips);
-//   return sortedTrips;
 }
-
-
-
-
-
-
-
-// Seems like I'm not using this
-// let resolvedData = Promise.resolve(travelersData);
