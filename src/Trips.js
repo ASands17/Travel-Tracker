@@ -6,7 +6,7 @@ class Trips{
     this.travelerId = travelerId;
     this.allTrips = allTripsData;
     this.trips;
-    this.allDestinationData = allDetinationData;
+    this.allDestinationData = allDestinationData;
 
     this.getTripInstances();
   }
@@ -15,7 +15,8 @@ class Trips{
 
   getTripInstances() {
     this.trips = this.getTravelerTrips()
-      .map(tripObj => new Trip(tripObj));
+    // TODO 1
+      .map(tripObj => new Trip(tripObj, this.allDestinationData));
     return this.trips;
   }
 
@@ -26,25 +27,14 @@ class Trips{
       return travelerTrips;
   }
 
-  //Why is this not working????????
-
-  //I have access to array of user trips in this.trips
-  //That means I have access to calculate cost
-  //must first determine destination for each trip
-  //then I should be able to calculate cost since destination will be
-  //availiable to me.
-
-  //so why is this giving me undefined???
-
   getCostOfApprovedTrips() {
-    let destinationTrips = this.trips.map(trip => {
-      return trip.determineDestination(trip.destinationObj.id, this.allDestinationData);
-    });
-
-    let approvedTrips = destinationTrips.filter(trip => {
+    let approvedTrips = this.trips.filter(trip => {
+      // console.log("assigned trips", destinationTrips)
+      // return trip.status === "approved";
+      // console.log("TEST", trip.estimatedLodgingCostPerDay)
       return trip.status === "approved";
     });
-    console.log("all trips", approvedTrips)
+
       let totalCost = approvedTrips.reduce((sum, trip) => {
         // console.log("trip", trip);
         sum += trip.calculateCost();

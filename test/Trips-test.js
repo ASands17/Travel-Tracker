@@ -357,7 +357,7 @@ describe("Trips", () => {
     });
 
     it("should calculate total cost approved trips", function () {
-      expect(trips3.getCostOfApprovedTrips()).to.equal(100);
+      expect(trips3.getCostOfApprovedTrips()).to.equal(6853);
     });
 
     // console.log(trips1.getCostOfApprovedTrips())

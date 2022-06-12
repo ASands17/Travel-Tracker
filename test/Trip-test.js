@@ -95,7 +95,7 @@ describe("Trip", () => {
   });
 
   it("should determine the trip destination", () => {
-    expect(trip1.determineDestination(trip1.destinationId, destinationData)).to.deep.equal(
+    expect(trip1.determineDestination()).to.deep.equal(
       {
       "id": 49,
       "destination": "Castries, St Lucia",
@@ -105,6 +105,7 @@ describe("Trip", () => {
       "alt": "aerial photography of rocky mountain under cloudy sky"
       }
     );
+
     expect(trip1.destinationObj).to.deep.equal(
       {
       "id": 49,
@@ -119,7 +120,7 @@ describe("Trip", () => {
   });
 
   it("should calculate the trip cost", () => {
-    expect(trip1.calculateCost(trip1.determineDestination(trip1.destinationId, destinationData))).to.equal(5819);
+    expect(trip1.calculateCost(trip1.determineDestination(destinationData))).to.equal(5819);
     // expect(trip2.calculateCost(destinationData)).to.equal("New York, New York");
   });
 

@@ -1,5 +1,5 @@
 class Trip {
-  constructor(tripObj, destinationDataAll){
+  constructor(tripObj, destinationData){
     this.id = tripObj.id;
     this.destinationId = tripObj.destinationID;
     this.travelers = tripObj.travelers;
@@ -10,16 +10,17 @@ class Trip {
     this.isCurrent;
     this.isUpcoming;
     this.isPast;
-
+    this.destinationData = destinationData;
     //maybe refactor below to be one method
     this.checkIfCurrentTrip();
     this.checkIfUpcomingTrip();
     this.checkIfPast();
+    this.determineDestination();
   }
 
-  determineDestination(destinationId, destinationDataAll) {
-    let tripDestination = destinationDataAll.find(destinationObj => {
-      return destinationObj.id === destinationId;
+  determineDestination() {
+    let tripDestination = this.destinationData.find(destination => {
+      return destination.id === this.destinationId;
     })
     this.destinationObj = tripDestination;
     return tripDestination;
@@ -28,7 +29,6 @@ class Trip {
   calculateCost() {
     let flightCost = this.travelers * this.destinationObj.estimatedFlightCostPerPerson;
     let lodgingCost = this.duration * this.destinationObj.estimatedLodgingCostPerDay;
-    // console.log("flight in trip", this.destinationObj.estimatedFlightCostPerPerson)
     let totalCost = flightCost + lodgingCost;
     let totalCostWithAgentFee = totalCost + (totalCost * .10);
     return totalCostWithAgentFee;
@@ -66,7 +66,6 @@ class Trip {
     } else {
       this.isPast = false;
     }
-  // console.log("isPast", this.isPast)
   }
 }
 export default Trip;
