@@ -11,11 +11,8 @@ class Trips{
     this.getTripInstances();
   }
 
-  //will get array of all a user's trips
-
   getTripInstances() {
     this.trips = this.getTravelerTrips()
-    // TODO 1
       .map(tripObj => new Trip(tripObj, this.allDestinationData));
     return this.trips;
   }
@@ -29,18 +26,12 @@ class Trips{
 
   getCostOfApprovedTrips() {
     let approvedTrips = this.trips.filter(trip => {
-      // console.log("assigned trips", destinationTrips)
-      // return trip.status === "approved";
-      // console.log("TEST", trip.estimatedLodgingCostPerDay)
       return trip.status === "approved";
     });
-
       let totalCost = approvedTrips.reduce((sum, trip) => {
-        // console.log("trip", trip);
         sum += trip.calculateCost();
         return sum;
       }, 0);
-      console.log("tot cost", totalCost)
     return totalCost;
   }
 }

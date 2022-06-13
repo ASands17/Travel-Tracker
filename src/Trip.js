@@ -11,7 +11,7 @@ class Trip {
     this.isUpcoming;
     this.isPast;
     this.destinationData = destinationData;
-    //maybe refactor below to be one method
+    
     this.checkIfCurrentTrip();
     this.checkIfUpcomingTrip();
     this.checkIfPast();
