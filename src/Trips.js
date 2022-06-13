@@ -1,6 +1,5 @@
 import Trip from './Trip'
 
-    //gets all trips for one user
 class Trips{
   constructor(travelerId, allTripsData, allDestinationData){
     this.travelerId = travelerId;
@@ -14,8 +13,6 @@ class Trips{
   getTripInstances() {
     this.trips = this.getTravelerTrips()
       .map(tripObj => new Trip(tripObj, this.allDestinationData));
-      console.log("this.tripsOK", this.trips)
-      //this makes all trips into instances of trip
     return this.trips;
   }
 
@@ -23,8 +20,6 @@ class Trips{
     let travelerTrips = this.allTrips.filter(trip => {
       return trip.userID === this.travelerId;
     })
-    // console.log("travelerTripsOK", travelerTrips)
-    //This gets all trips for only one user
       return travelerTrips;
   }
 

@@ -1,7 +1,7 @@
 class Trip {
   constructor(tripObj, destinationData){
     this.id = tripObj.id;
-    this.destinationId = tripObj.destinationID;
+    this.destinationID = tripObj.destinationID;
     this.travelers = tripObj.travelers;
     this.date = tripObj.date;
     this.duration = tripObj.duration;
@@ -20,7 +20,7 @@ class Trip {
 
   determineDestination() {
     let tripDestination = this.destinationData.find(destination => {
-      return destination.id === this.destinationId;
+      return destination.id === this.destinationID;
     })
     this.destinationObj = tripDestination;
     return tripDestination;
