@@ -119,52 +119,52 @@ describe("Trip", () => {
     );
   });
 
-    it("should get updated to reflect destination information", () => {
-      expect(trip1.destinationObj).to.deep.equal(
-        {
-        "id": 49,
-        "destination": "Castries, St Lucia",
-        "estimatedLodgingCostPerDay": 650,
-        "estimatedFlightCostPerPerson": 90,
-        "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
-        "alt": "aerial photography of rocky mountain under cloudy sky"
-        }
-      );
-    });
+  it("should get updated to reflect destination information", () => {
+    expect(trip1.destinationObj).to.deep.equal(
+      {
+      "id": 49,
+      "destination": "Castries, St Lucia",
+      "estimatedLodgingCostPerDay": 650,
+      "estimatedFlightCostPerPerson": 90,
+      "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
+      "alt": "aerial photography of rocky mountain under cloudy sky"
+      }
+    );
+  });
 
-    it("should calculate the trip cost", () => {
-      expect(trip1.calculateCost(trip1.determineDestination(destinationData))).to.equal(5819);
-      expect(trip2.calculateCost(trip1.determineDestination(destinationData))).to.equal(4565);
-    });
+  it("should calculate the trip cost", () => {
+    expect(trip1.calculateCost(trip1.determineDestination(destinationData))).to.equal(5819);
+    expect(trip2.calculateCost(trip1.determineDestination(destinationData))).to.equal(4565);
+  });
 
-    it("should show if a trip is current", () => {
-      trip1.isCurrent = null;
-      expect(trip1.isCurrent).to.equal(null);
-      trip1.checkIfCurrentTrip();
-      expect(trip1.isCurrent).to.equal(false);
-    });
+  it("should show if a trip is current", () => {
+    trip1.isCurrent = null;
+    expect(trip1.isCurrent).to.equal(null);
+    trip1.checkIfCurrentTrip();
+    expect(trip1.isCurrent).to.equal(false);
+  });
 
-    it("should show if a trip is upcoming", () => {
-      trip1.isUpcoming = null;
-      expect(trip1.isUpcoming).to.equal(null);
-      trip1.checkIfUpcomingTrip();
-      expect(trip1.isUpcoming).to.equal(false);
+  it("should show if a trip is upcoming", () => {
+    trip1.isUpcoming = null;
+    expect(trip1.isUpcoming).to.equal(null);
+    trip1.checkIfUpcomingTrip();
+    expect(trip1.isUpcoming).to.equal(false);
 
-      trip2.isUpcoming = null;
-      expect(trip2.isUpcoming).to.equal(null);
-      trip2.checkIfUpcomingTrip();
-      expect(trip2.isUpcoming).to.equal(true);
-    });
+    trip2.isUpcoming = null;
+    expect(trip2.isUpcoming).to.equal(null);
+    trip2.checkIfUpcomingTrip();
+    expect(trip2.isUpcoming).to.equal(true);
+  });
 
-    it("should show if a trip is past", () => {
-      trip1.isPast = null;
-      expect(trip1.isPast).to.equal(null);
-      trip1.checkIfPast();
-      expect(trip1.isPast).to.equal(false);
+  it("should show if a trip is past", () => {
+    trip1.isPast = null;
+    expect(trip1.isPast).to.equal(null);
+    trip1.checkIfPast();
+    expect(trip1.isPast).to.equal(false);
 
-      trip3.isPast = null;
-      expect(trip3.isPast).to.equal(null);
-      trip3.checkIfPast();
-      expect(trip3.isPast).to.equal(true);
-    });
+    trip3.isPast = null;
+    expect(trip3.isPast).to.equal(null);
+    trip3.checkIfPast();
+    expect(trip3.isPast).to.equal(true);
+  });
 });
