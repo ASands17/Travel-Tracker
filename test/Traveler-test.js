@@ -26,26 +26,26 @@ describe("Traveler", () => {
     traveler3 = new Traveler(traveler3Data);
   });
 
-  it.skip("should be an instance of Traveler", () => {
+  it("should be an instance of Traveler", () => {
     expect(traveler1Data).to.be.an("object");
     expect(traveler1).to.be.an.instanceof(Traveler);
     expect(traveler2).to.be.an.instanceof(Traveler);
     expect(traveler3).to.be.an.instanceof(Traveler);
   });
 
-  it.skip("should have a unique Traveler ID", () => {
+  it("should have a unique Traveler ID", () => {
     expect(traveler1.id).to.equal(1);
     expect(traveler2.id).to.equal(2);
     expect(traveler3.id).to.equal(3);
   });
 
-  it.skip("should have a name", () => {
+  it("should have a name", () => {
     expect(traveler1.name).to.equal("Ham Leadbeater");
     expect(traveler2.name).to.equal("Rachael Vaughten");
     expect(traveler3.name).to.equal("Sibby Dawidowitsch");
   });
 
-  it.skip("should be able to return a Traveler's first name", function () {
+  it("should be able to return a Traveler's first name", function () {
     expect(traveler1.getTravelerName()).to.equal("Ham");
     expect(traveler2.getTravelerName()).to.equal("Rachael");
     expect(traveler3.getTravelerName()).to.equal("Sibby");
