@@ -23,6 +23,17 @@ class Trips{
     return travelerTrips;
   }
 
+  // getCostOfApprovedTrips() {
+  //   let approvedTrips = this.trips.filter(trip => {
+  //     return trip.status === "approved";
+  //   });
+  //     let totalCost = approvedTrips.reduce((sum, trip) => {
+  //       sum += trip.calculateCost();
+  //       return sum;
+  //     }, 0);
+  //   return totalCost;
+  // }
+
   getCostOfApprovedTrips() {
     let approvedTrips = this.trips.filter(trip => {
       return trip.status === "approved";

@@ -90,6 +90,7 @@ function showTraveler(globalTravelers) {
 
 function displayPresentTrips(travelerID) {
   allTripInstances = new Trips(travelerID, globalTrips.trips, globalDestinations.destinations);
+  console.log("TRIPS instances", allTripInstances.trips.map(trip => trip.date));
   let presentTrips = allTripInstances.trips.filter(instance => instance.isCurrent === true);
   let allPresentNames = presentTrips.map(trip => {
     return presentDestination.innerHTML += trip.destinationObj.destination
