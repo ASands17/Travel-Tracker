@@ -20,7 +20,7 @@ class Trips{
     let travelerTrips = this.allTrips.filter(trip => {
       return trip.userID === this.travelerId;
     })
-      return travelerTrips;
+    return travelerTrips;
   }
 
   getCostOfApprovedTrips() {
