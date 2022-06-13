@@ -4,13 +4,68 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
-</head>
-<body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
 
-</body>
+
+  <title>Travel Tracker</title>
+</head>
+  <body>
+    <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
+  <h1>Travel Tracker</h1>
+  <h2 class= "name-greeting" id="nameGreeting"> Hello, </h2>
+  <main>
+    <div class= "left-card" id="leftCard">
+      <section class= "present-trips" id="presentTrips">
+        <h2 class= "present-trips-header" id="presentTripsHeader"> Present Trips </h2>
+        <p class= "present-trips-destination" id="presentTripsDestination"> Destination: </p>
+        <p class= "present-trips-dates" id="presentTripsDates"> Trip Dates: </p>
+        <p class= "present-trips-travelers" id="presentTripsTravelers"> Number of Travelers: </p>
+      </section>
+    </div>
+    <div class= "middle-left-card" id="middleLeftCard">
+      <section class= "upcoming-trips" id="upcomingTrips">
+        <h2 class= "upcoming-trips-header" id="upcomingTripsHeader"> Upcoming Trips </h2>
+        <p class= "upcoming-trips-destination" id="upcomingTripsDestination"> Destination: </p>
+        <p class= "upcoming-trips-dates" id="upcomingTripsDates"> Trip Dates: </p>
+        <p class= "upcoming-trips-travelers" id="upcomingTripsTravelers"> Number of Travelers: </p>
+        <p class= "upcoming-trips-status" id="upcomingTripsStatus"> Status: </p>
+      </section>
+    </div>
+    <div class= "middle-right-card" id="middleRightCard">
+      <section class= "pending-trips" id="pendingTrips">
+        <h2 class= "pending-trips-header" id="pendingTripsHeader"> Pending Trips </h2>
+        <p class= "pending-trips-destination" id="pendingTripsDestination"> Destination: </p>
+        <p class= "pending-trips-dates" id="pendingTripsDates"> Trip Dates: </p>
+        <p class= "pending-trips-travelers" id="pendingTripsTravelers"> Number of Travelers: </p>
+        <p class= "pending-trips-status" id="pendingTripsStatus"> Status: </p>
+      </section>
+    </div>
+    <div class= "right-card" id="rightCard">
+      <section class= "past-trips" id="pastTrips">
+        <h2 class= "past-trips-header" id="pastTripsHeader"> Past Trips </h2>
+        <p class= "past-trips-destination" id="pastTripsDestination"> Destination: </p>
+        <p class= "past-trips-dates" id="pastTripsDates"> Trip Dates: </p>
+        <p class= "past-trips-spent" id="pastTripsSpent"> Yearly Amount Spent: </p>
+      </section>
+      <section class= "request-trips" id="requestTrips">
+        <h2 class= "request-trips-header" id="requestTripsHeader"> Add New Trip! </h2>
+        <label class="request-trips-destination" id="requestTripsDestination">Select Destination:</label><br>
+        <select class="request-trips-destination-dropdown" id="requestTripsDestinationDropdown">
+          <option value="testValue">Click me!</option>
+          <option value="testValue">No, pick me!</option>
+          <option value="testValue">Hey! Over here!</option>
+        </select><br>
+        <!-- <option value="testValue">Pick me!</option> -->
+        <!-- <input class="request-trips-arrival-input" id="requestSleepArrivalInput" type="dropdown" placeholder="dd/mm/yyyy" required><br> -->
+
+        <label class="request-trips-arrival" id="requestTripsArrival">Arrival Date:</label><br>
+        <input class="request-trips-arrival-input" id="requestTripsArrivalInput" type="date" placeholder="dd/mm/yyyy" required><br>
+        <label class="request-trips-departure" id="requestTripsDeparture">Departure Date:</label><br>
+        <input class="request-trips-departure-input" id="requestTripsDepartureInput" type="date" placeholder="dd/mm/yyyy" required><br><br>
+        <button class="request-trips-departure-button" id="requestTripsDepartureButton"> Submit Trip! </button>
+      </section>
+    </div>
+  </main>
+    <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+    <script src="bundle.js"></script>
+  </body>
 </html>
