@@ -210,6 +210,12 @@ describe("Trips", () => {
     expect(trips3).to.be.an.instanceof(Trips);
   });
 
+  it("should have a unique Traveler ID", () => {
+    expect(trips1.travelerId).to.equal(1);
+    expect(trips2.travelerId).to.equal(2);
+    expect(trips3.travelerId).to.equal(3);
+  });
+
   it("should have all trips as a property", () => {
     expect(trips1.allTrips).to.deep.equal([
       {
@@ -313,12 +319,6 @@ describe("Trips", () => {
       "suggestedActivities": []
       }
     ]);
-  });
-
-  it("should have a unique Traveler ID", () => {
-    expect(trips1.travelerId).to.equal(1);
-    expect(trips2.travelerId).to.equal(2);
-    expect(trips3.travelerId).to.equal(3);
   });
 
   it("should have all of a user's trips as a property", () => {

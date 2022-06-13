@@ -63,6 +63,14 @@ describe("Trip", () => {
         "estimatedFlightCostPerPerson": 200,
         "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
         "alt": "people crossing the street during the day surrounded by tall buildings and advertisements"
+      },
+      {
+      "id": 28,
+      "destination": "San Juan, Puerto Rico",
+      "estimatedLodgingCostPerDay": 70,
+      "estimatedFlightCostPerPerson": 900,
+      "image": "https://images.unsplash.com/photo-1580237541049-2d715a09486e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2090&q=80",
+      "alt": "white and brown concrete buildings near sea under white clouds during daytime"
       }
     ]
 
@@ -74,6 +82,7 @@ describe("Trip", () => {
   it("should be an instance of Trip", () => {
     expect(trip1).to.be.an.instanceof(Trip);
     expect(trip2).to.be.an.instanceof(Trip);
+    expect(trip3).to.be.an.instanceof(Trip);
   });
 
   it("should have a unique Trip ID", () => {
@@ -84,16 +93,19 @@ describe("Trip", () => {
   it("should have a destination ID", () => {
     expect(trip1.destinationID).to.equal(49);
     expect(trip2.destinationID).to.equal(25);
+    expect(trip3.destinationID).to.equal(28);
   });
 
   it("should have the number of travelers", () => {
     expect(trip1.travelers).to.equal(1);
     expect(trip2.travelers).to.equal(5);
+    expect(trip3.travelers).to.equal(3);
   });
 
   it("should have the start date of the trip", () => {
     expect(trip1.date).to.equal("2022/09/16");
     expect(trip2.date).to.equal("2022/10/04");
+    expect(trip3.date).to.equal("2021/01/09");
   });
 
   it("should have the trip duration", () => {
@@ -104,6 +116,7 @@ describe("Trip", () => {
   it("should have the status", () => {
     expect(trip1.status).to.equal("pending");
     expect(trip2.status).to.equal("approved");
+    expect(trip3.status).to.equal("approved");
   });
 
   it("should determine the trip destination", () => {
@@ -115,6 +128,16 @@ describe("Trip", () => {
       "estimatedFlightCostPerPerson": 90,
       "image": "https://images.unsplash.com/photo-1524478075552-c2763ea171b8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80",
       "alt": "aerial photography of rocky mountain under cloudy sky"
+      }
+    );
+    expect(trip2.determineDestination()).to.deep.equal(
+      {
+      "id": 25,
+      "destination": "New York, New York",
+      "estimatedLodgingCostPerDay": 175,
+      "estimatedFlightCostPerPerson": 200,
+      "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+      "alt": "people crossing the street during the day surrounded by tall buildings and advertisements"
       }
     );
   });
@@ -130,11 +153,16 @@ describe("Trip", () => {
       "alt": "aerial photography of rocky mountain under cloudy sky"
       }
     );
-  });
-
-  it("should calculate the trip cost", () => {
-    expect(trip1.calculateCost(trip1.determineDestination(destinationData))).to.equal(5819);
-    expect(trip2.calculateCost(trip1.determineDestination(destinationData))).to.equal(4565);
+    expect(trip2.destinationObj).to.deep.equal(
+      {
+      "id": 25,
+      "destination": "New York, New York",
+      "estimatedLodgingCostPerDay": 175,
+      "estimatedFlightCostPerPerson": 200,
+      "image": "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+      "alt": "people crossing the street during the day surrounded by tall buildings and advertisements"
+      }
+    );
   });
 
   it("should show if a trip is current", () => {
@@ -166,5 +194,10 @@ describe("Trip", () => {
     expect(trip3.isPast).to.equal(null);
     trip3.checkIfPast();
     expect(trip3.isPast).to.equal(true);
+  });
+
+  it("should calculate the trip cost", () => {
+    expect(trip1.calculateCost(trip1.determineDestination(destinationData))).to.equal(5819);
+    expect(trip2.calculateCost(trip1.determineDestination(destinationData))).to.equal(4565);
   });
 });
