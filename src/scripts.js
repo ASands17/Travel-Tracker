@@ -30,6 +30,7 @@ var nameDisplay = document.querySelector('#nameGreeting')
 var presentTripsHolder = document.querySelector('#presentTripsHolder')
 var upcomingTripsHolder = document.querySelector('#upcomingTripsHolder')
 var pastTripsHolder = document.querySelector('#pastTripsCardHolder')
+var totalForPastTrips = document.querySelector('#pastTripsSpent');
 var pendingTripsHolder = document.querySelector('#pendingTripsHolder')
 
 var requestTripButton = document.querySelector('#requestTripsDepartureButton')
@@ -140,5 +141,7 @@ function displayPastTrips() {
       <p> Trip Dates: ${trip.date} </p>
       </div>`;
   });
+
+  totalForPastTrips.innerHTML += allTripInstances.getCostOfApprovedTrips();
 
 }
