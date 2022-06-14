@@ -12,7 +12,7 @@
 // console.log('This is the JavaScript entry file - your code begins here.');
 
 //IMPORTS
-import {getTravelers, getTrips, getDestinations} from './API-fetch';
+import {getTravelers, getTrips, getDestinations, addNewTrip} from './API-fetch';
 import './css/styles.css';
 import Trip from './Trip'
 import Trips from './Trips'
@@ -33,11 +33,13 @@ var pastTripsHolder = document.querySelector('#pastTripsCardHolder')
 var totalForPastTrips = document.querySelector('#pastTripsSpent');
 var pendingTripsHolder = document.querySelector('#pendingTripsHolder')
 
-var requestTripButton = document.querySelector('#requestTripsDepartureButton')
+var submitButton = document.querySelector('#requestTripsDepartureButton')
+
 
 
 //EVENT LISTENERS
 window.addEventListener('load', getGlobalDataFromAPI);
+submitButton.addEventListener("click", getInputData);
 
 
 //EVENT HANDLERS
@@ -56,8 +58,6 @@ function getGlobalDataFromAPI() {
 }
 
 //FUNCTIONS
-
-
 function getRandomTraveler(allTravelers) {
   return allTravelers.travelers[Math.floor(Math.random()*allTravelers.travelers.length)];
 }
@@ -70,6 +70,7 @@ function showTraveler() {
   displayPastTrips();
   displayUpcomingTrips();
   displayPendingTrips();
+  assignDropDownValues();
 }
 
 function displayPresentTrips() {
@@ -144,4 +145,33 @@ function displayPastTrips() {
 
   totalForPastTrips.innerHTML += allTripInstances.getCostOfApprovedTrips();
 
+}
+
+function assignDropDownValues() {
+  const dropdown = document.querySelector('#requestTripsDestinationDropdown');
+
+  globalDestinations.destinations.forEach((destination) => {
+    dropdown.innerHTML += `<option value="${destination.id}">${destination.destination}</option>`
+  })
+}
+
+function getInputData() {
+  let arrivalDate = document.getElementById('requestTripsArrivalInput').value;
+  let departureDate = document.getElementById('requestTripsDepartureInput').value;
+  let destination = document.getElementById('requestTripsDestinationDropdown').value;
+  let numberOfTravelers = document.getElementById('requestTripsTravelersInput').value
+  const arriveDate = new Date(arrivalDate);
+  const departDate = new Date(departureDate);
+  const diffTime = Math.abs(departDate - arriveDate);
+  const duration = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const formattedArrival = new Date(arrivalDate).toLocaleDateString('en-ZA')
+  let dataToTransmit = {id: globalTrips.trips.length + 1, userID: currentTraveler.id, destinationID: Number(destination),
+    travelers: numberOfTravelers, date: formattedArrival, duration: duration,
+    status: 'pending', suggestedActivities: []};
+
+  submitNewTrip(dataToTransmit);
+}
+
+function submitNewTrip(newTrip) {
+  addNewTrip(newTrip).then((res) => { console.log(res)});
 }
