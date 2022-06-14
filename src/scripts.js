@@ -27,23 +27,10 @@ var allTripInstances;
 
 var nameDisplay = document.querySelector('#nameGreeting')
 
-var presentDestination = document.querySelector('#presentTripsDestination')
-var presentDates = document.querySelector('#presentTripsDates')
-var presentTravelers = document.querySelector('#presentTripsTravelers')
-
-var upcomingDestination = document.querySelector('#upcomingTripsDestination')
-var upcomingDates = document.querySelector('#upcomingTripsDates')
-var upcomingTravelers = document.querySelector('#upcomingTripsTravelers')
-var upcomingStatus = document.querySelector('#upcomingTripsStatus')
-
-var pastDestination = document.querySelector('#pastTripsDestination')
-var pastDates = document.querySelector('#pastTripsDates')
-var pastTravelers = document.querySelector('#pastTripsTravelers')
-
-var pendingDestination = document.querySelector('#pendingTripsDestination')
-var pendingDates = document.querySelector('#pendingTripsDates')
-var pendingTravelers = document.querySelector('#pendingTripsTravelers')
-var pendingStatus = document.querySelector('#pendingTripsStatus')
+var presentTripsHolder = document.querySelector('#presentTripsHolder')
+var upcomingTripsHolder = document.querySelector('#upcomingTripsHolder')
+var pastTripsHolder = document.querySelector('#pastTripsCardHolder')
+var pendingTripsHolder = document.querySelector('#pendingTripsHolder')
 
 var requestTripButton = document.querySelector('#requestTripsDepartureButton')
 
@@ -63,84 +50,95 @@ function getGlobalDataFromAPI() {
     globalTravelers = values[0];
     globalTrips = values[1];
     globalDestinations = values[2];
-    startFnOffHere();
-
-    //Start DOM manip from fn above (will rename)
+    showTraveler();
   })
 }
 
 //FUNCTIONS
-function startFnOffHere() {
-  console.log("globalData in method", globalTravelers, globalTrips, globalDestinations);
-  showTraveler(globalTravelers);
-}
+
 
 function getRandomTraveler(allTravelers) {
   return allTravelers.travelers[Math.floor(Math.random()*allTravelers.travelers.length)];
 }
 
-function showTraveler(globalTravelers) {
+function showTraveler() {
   currentTraveler = getRandomTraveler(globalTravelers);
   nameDisplay.innerHTML += currentTraveler.name;
-  displayPresentTrips(currentTraveler.id);
-  displayPastTrips(currentTraveler.id);
-  displayUpcomingTrips(currentTraveler.id);
-  displayPendingTrips(currentTraveler.id);
+  allTripInstances = new Trips(currentTraveler.id, globalTrips.trips, globalDestinations.destinations);
+  displayPresentTrips();
+  displayPastTrips();
+  displayUpcomingTrips();
+  displayPendingTrips();
 }
 
-function displayPresentTrips(travelerID) {
-  allTripInstances = new Trips(travelerID, globalTrips.trips, globalDestinations.destinations);
-  console.log("TRIPS instances", allTripInstances.trips.map(trip => trip.date));
-  let presentTrips = allTripInstances.trips.filter(instance => instance.isCurrent === true);
-  let allPresentNames = presentTrips.map(trip => {
-    return presentDestination.innerHTML += trip.destinationObj.destination
+function displayPresentTrips() {
+  if (allTripInstances.presentTrips.length === 0) {
+    presentTripsHolder.innerHTML += `<div class="trip-card">
+      <h3>Currently there are no present trips</h3>
+    </div>`;
+    return;
+  }
+
+  allTripInstances.presentTrips.forEach(trip => {
+    presentTripsHolder.innerHTML += `<div class="trip-card">
+      <p> Destination: ${trip.destinationObj.destination}</p>
+      <p> Trip Dates: ${trip.date} </p>
+      <p> Number of Travelers: ${trip.travelers} </p>
+      </div>`;
   });
-  let allPresentDates = presentTrips.map(trip => {
-    return presentDates.innerHTML += trip.date;
+
+}
+
+function displayUpcomingTrips() {
+  let upcomingTrips = allTripInstances.upcomingTrips;
+  if(!upcomingTrips) {
+    upcomingTripsHolder.innerHTML += `<div class="trip-card">
+      <h3>Currently there are no upcoming trips</h3>
+    </div>`;
+    return;
+  }
+  upcomingTrips.forEach(trip => {
+    upcomingTripsHolder.innerHTML += `<div class="trip-card">
+      <p> Destination: ${trip.destinationObj.destination}</p>
+      <p> Trip Dates: ${trip.date} </p>
+      <p> Number of Travelers: ${trip.travelers} </p>
+      <p> Status: ${trip.status}</p>
+      </div>`;
   });
-  let allPresentTravelers = presentTrips.map(trip => {
-    return presentTravelers.innerHTML += trip.travelers;
+
+}
+
+function displayPendingTrips() {
+  let pendingTrips = allTripInstances.pendingTrips;
+  if(pendingTrips.length === 0) {
+    pendingTripsHolder.innerHTML += `<div class="trip-card">
+      <h3>Currently there are no pending trips</h3>
+    </div>`;
+    return;
+  }
+  pendingTrips.forEach(trip => {
+    pendingTripsHolder.innerHTML += `<div class="trip-card">
+      <p> Destination: ${trip.destinationObj.destination}</p>
+      <p> Trip Dates: ${trip.date} </p>
+      <p> Number of Travelers: ${trip.travelers} </p>
+      <p> Status: ${trip.status} </p>
+      </div>`;
   });
 }
 
-function displayUpcomingTrips(travelerID) {
-  let upcomingTrips = allTripInstances.trips.filter(instance => instance.isUpcoming === true);
-  let allUpcomingNames = upcomingTrips.map(trip => {
-    return upcomingDestination.innerHTML += trip.destinationObj.destination
+function displayPastTrips() {
+  let pastTrips = allTripInstances.pastTrips;
+  if (pastTrips.length === 0) {
+    pastTripsHolder.innerHTML += `<div class="trip-card">
+      <h3>Currently there are no past trips</h3>
+    </div>`;
+    return;
+  }
+  pastTrips.forEach(trip => {
+    pastTripsHolder.innerHTML += `<div class="trip-card">
+      <p> Destination: ${trip.destinationObj.destination}</p>
+      <p> Trip Dates: ${trip.date} </p>
+      </div>`;
   });
-  let allUpcomingDates = upcomingTrips.map(trip => {
-    return upcomingDates.innerHTML += trip.date;
-  });
-  let allUpcomingTravelers = upcomingTrips.map(trip => {
-    return upcomingTravelers.innerHTML += trip.travelers;
-  });
-  let allUpcomingStatuses = upcomingTrips.map(trip => {
-    return upcomingStatus.innerHTML += trip.status;
-  });
-}
 
-function displayPendingTrips(travelerID) {
-  let pendingTrips = allTripInstances.trips.filter(instance => instance.status === "pending");
-  let allPendingNames = pendingTrips.map(trip => {
-    return pendingDestination.innerHTML += trip.destinationObj.destination
-  });
-  let allPendingDates = pendingTrips.map(trip => {
-    return pendingDates.innerHTML += trip.date;
-  });
-  let allPendingTravelers = pendingTrips.map(trip => {
-    return pendingTravelers.innerHTML += trip.travelers;
-  });
-  let allPendingStatuses = pendingTrips.map(trip => {
-    return pendingStatus.innerHTML += trip.status;
-  });
-}
-
-function displayPastTrips(travelerID) {
-  let pastTrips = allTripInstances.trips.filter(instance => instance.isPast === true);
-  let allPastNames = pastTrips.map(trip => {
-    return pastDestination.innerHTML += trip.destinationObj.destination
-  });
-  let allPastDates = pastTrips.map(trip => {
-    return pastDates.innerHTML += trip.date;
-  });
 }

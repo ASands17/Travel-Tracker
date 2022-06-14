@@ -24,3 +24,9 @@ main {
   height: 80%;
   width: 22%;
 }
+
+.trip-card {
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 15px
+}

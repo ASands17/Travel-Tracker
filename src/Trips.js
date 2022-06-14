@@ -6,8 +6,14 @@ class Trips{
     this.allTrips = allTripsData;
     this.trips;
     this.allDestinationData = allDestinationData;
-
+    this.presentTrips;
+    this.upcomingTrips;
+    this.pendingTrips;
+    this.pastTrips;
     this.getTripInstances();
+    this.getPresentTrips();
+    this.getPendingTrips();
+    this.getPastTrips();
   }
 
   getTripInstances() {
@@ -44,6 +50,29 @@ class Trips{
       }, 0);
     return totalCost;
   }
+
+  // REFACTORY
+
+  getPresentTrips() {
+    this.presentTrips = this.trips.filter((trip) => {
+      return trip.isCurrent === true;
+    })
+  }
+
+  getUpcomingTrips() {
+    this.upcomingTrips = this.trips.filter((trip) => {
+      return trip.isUpcoming === true;
+    })
+  }
+
+  getPendingTrips() {
+    this.pendingTrips = this.trips.filter(instance => instance.status === "pending");
+  }
+
+  getPastTrips() {
+    this.pastTrips = this.trips.filter(instance => instance.isPast === true);
+  }
+
 }
 
 export default Trips;
