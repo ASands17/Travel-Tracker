@@ -140,3 +140,17 @@ main {
   height: 75px;
   font-size: 20px;
 }
+
+.login-form {
+  /* background: url(https://images.unsplash.com/photo-1473625247510-8ceb1760943f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDR8fHRyYXZlbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60);
+  background-repeat: no-repeat;
+  background-size: auto; */
+}
+
+.hidden {
+  display: none;
+}
+
+.error {
+  color: red;
+}

@@ -1,5 +1,5 @@
 //IMPORTS
-import {getTravelers, getTrips, getDestinations, addNewTrip} from './API-fetch';
+import {getTravelers, getTrips, getDestinations, addNewTrip, getTravelerById} from './API-fetch';
 import './css/styles.css';
 import Trip from './Trip';
 import Trips from './Trips';
@@ -18,10 +18,12 @@ var pastTripsHolder = document.querySelector('#pastTripsCardHolder');
 var totalForPastTrips = document.querySelector('#pastTripsSpent');
 var pendingTripsHolder = document.querySelector('#pendingTripsHolder');
 var submitButton = document.querySelector('#requestTripsDepartureButton');
+var loginButton = document.querySelector('#signInSubmit');
 
 //EVENT LISTENERS
-window.addEventListener('load', getGlobalDataFromAPI);
+window.addEventListener('load', getGlobalDataFromAPI());
 submitButton.addEventListener("click", getInputData);
+loginButton.addEventListener("click", login);
 
 //EVENT HANDLERS
 function getGlobalDataFromAPI() {
@@ -33,7 +35,6 @@ function getGlobalDataFromAPI() {
     globalTravelers = values[0];
     globalTrips = values[1];
     globalDestinations = values[2];
-    showTraveler();
   })
 }
 
@@ -42,8 +43,7 @@ function getRandomTraveler(allTravelers) {
   return allTravelers.travelers[Math.floor(Math.random()*allTravelers.travelers.length)];
 }
 
-function showTraveler() {
-  currentTraveler = getRandomTraveler(globalTravelers);
+function showTraveler(currentTraveler) {
   nameDisplay.innerHTML += currentTraveler.name;
   allTripInstances = new Trips(currentTraveler.id, globalTrips.trips, globalDestinations.destinations);
   displayPresentTrips();
@@ -62,7 +62,6 @@ function displayPresentTrips() {
     </div>`;
     return;
   }
-
   allTripInstances.presentTrips.forEach(trip => {
     presentTripsHolder.innerHTML += `<div class="trip-card">
       <p class="destination-name" tabindex="0"> Destination: <br> ${trip.destinationObj.destination}</p>
@@ -142,7 +141,6 @@ function displayPastTrips() {
   totalForPastTrips.innerHTML += `$${allTripInstances.getCostOfApprovedTrips()}`;
 }
 
-
 function assignDropDownValues() {
   const dropdown = document.querySelector('#requestTripsDestinationDropdown');
   globalDestinations.destinations.forEach((destination) => {
@@ -176,4 +174,26 @@ function submitNewTrip(newTrip) {
       displayPendingTrips();
     })
   });
+}
+
+function login() {
+  const email = document.querySelector('#emailInput').value;
+  const password = document.querySelector('#passwordInput').value;
+  const form = document.querySelector('#loginForm');
+  const main = document.querySelector('#mainContainer');
+  if (password !== "travel") {
+    setTimeout(function(){
+      window.location.reload();
+    }, 5000);
+    return form.innerHTML += `<p class="error">Incorrect Password, please try again</p>`
+  }
+  const travelerId = email.replace(/traveler/g, '');
+  getTravelerById(travelerId).then((res) => {
+    currentTraveler = res;
+    console.log(currentTraveler)
+    showTraveler(currentTraveler);
+    form.classList.add("hidden");
+    main.classList.remove("hidden");
+  });
+
 }

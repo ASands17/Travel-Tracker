@@ -18,6 +18,12 @@ export function getTravelers() {
   .catch(error => alert('ERROR'));
 };
 
+export function getTravelerById(travelerId) {
+  return fetch(`http://localhost:3001/api/v1/travelers/${travelerId}`)
+  .then(res => res.json())
+  .catch(error => alert('ERROR'));
+};
+
 export function addNewTrip(dataToTransmit) {
   var response = fetch('http://localhost:3001/api/v1/trips', {
   method: 'POST',
