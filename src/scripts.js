@@ -126,19 +126,22 @@ function displayPastTrips() {
   if (pastTrips.length === 0) {
     pastTripsHolder.innerHTML += `<div class="bottom-trip-card">
       <p class="no-trips" tabindex="0">Currently there are no past trips</p>
+      <img tabindex="0" src="https://images.unsplash.com/photo-1484910292437-025e5d13ce87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1214&q=80"
+      alt="A person holds a silver compass in front of a grassy mountain on a cloudy day" class="trip-image">
     </div>`;
     return;
   }
   pastTrips.forEach(trip => {
     pastTripsHolder.innerHTML += `<div class="bottom-trip-card">
       <p class="destination-name" tabindex="0"> Destination: <br> ${trip.destinationObj.destination}</p>
-      <img tabindex="0" src="${trip.destinationObj.image}" alt="${trip.destinationObj.alt}" class="trip-image">
+      <img tabindex="0" src="${trip.destinationObj.image}" alt="${trip.destinationObj.alt}" class="past-trips-image">
       <p tabindex="0"> Start Date: ${new Date(trip.date).toLocaleDateString()}</p>
       <p tabindex="0"> Trip Duration: ${trip.duration} days</p>
       </div>`;
   });
   totalForPastTrips.innerHTML += `$${allTripInstances.getCostOfApprovedTrips()}`;
 }
+
 
 function assignDropDownValues() {
   const dropdown = document.querySelector('#requestTripsDestinationDropdown');
