@@ -14,6 +14,7 @@ class Trips{
     this.getPresentTrips();
     this.getPendingTrips();
     this.getPastTrips();
+    this.getUpcomingTrips();
   }
 
   getTripInstances() {
@@ -64,6 +65,7 @@ class Trips{
   }
 
   getUpcomingTrips() {
+    console.log(this.trips)
     this.upcomingTrips = this.trips.filter((trip) => {
       return trip.isUpcoming === true;
     })

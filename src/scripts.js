@@ -84,7 +84,7 @@ function displayPresentTrips() {
   allTripInstances.presentTrips.forEach(trip => {
     presentTripsHolder.innerHTML += `<div class="trip-card">
       <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${trip.date} </p>
+      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
       <p> Number of Travelers: ${trip.travelers} </p>
       </div>`;
   });
@@ -102,7 +102,7 @@ function displayUpcomingTrips() {
   upcomingTrips.forEach(trip => {
     upcomingTripsHolder.innerHTML += `<div class="trip-card">
       <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${trip.date} </p>
+      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
       <p> Number of Travelers: ${trip.travelers} </p>
       <p> Status: ${trip.status}</p>
       </div>`;
@@ -111,7 +111,9 @@ function displayUpcomingTrips() {
 }
 
 function displayPendingTrips() {
+  pendingTripsHolder.innerHTML = '';
   let pendingTrips = allTripInstances.pendingTrips;
+
   if(pendingTrips.length === 0) {
     pendingTripsHolder.innerHTML += `<div class="trip-card">
       <h3>Currently there are no pending trips</h3>
@@ -121,7 +123,7 @@ function displayPendingTrips() {
   pendingTrips.forEach(trip => {
     pendingTripsHolder.innerHTML += `<div class="trip-card">
       <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${trip.date} </p>
+      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
       <p> Number of Travelers: ${trip.travelers} </p>
       <p> Status: ${trip.status} </p>
       </div>`;
@@ -139,7 +141,7 @@ function displayPastTrips() {
   pastTrips.forEach(trip => {
     pastTripsHolder.innerHTML += `<div class="trip-card">
       <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${trip.date} </p>
+      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
       </div>`;
   });
 
@@ -173,5 +175,13 @@ function getInputData() {
 }
 
 function submitNewTrip(newTrip) {
-  addNewTrip(newTrip).then((res) => { console.log(res)});
+  addNewTrip(newTrip).then(() => {
+    getTrips().then((res) => {
+      globalTrips = res;
+      allTripInstances.allTrips = globalTrips.trips;
+      allTripInstances.getTripInstances();
+      allTripInstances.getPendingTrips();
+      displayPendingTrips();
+    })
+  });
 }
