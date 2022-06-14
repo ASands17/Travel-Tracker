@@ -1,22 +1,9 @@
-// This is the JavaScript entry file - your code begins here
-// Do not delete or rename this file ********
-
-
-// An example of how you tell webpack to use a CSS (SCSS) file
-// import './css/styles.css';
-
-// An example of how you tell webpack to use an image (also need to link to it in the index.html)
-// import './images/turing-logo.png'
-// import Trips from './Trips'
-
-// console.log('This is the JavaScript entry file - your code begins here.');
-
 //IMPORTS
 import {getTravelers, getTrips, getDestinations, addNewTrip} from './API-fetch';
 import './css/styles.css';
-import Trip from './Trip'
-import Trips from './Trips'
-import Traveler from './Traveler'
+import Trip from './Trip';
+import Trips from './Trips';
+import Traveler from './Traveler';
 
 //GLOBAL VARIABLES
 var globalTravelers, globalTrips, globalDestinations;
@@ -24,26 +11,19 @@ var currentTraveler;
 var allTripInstances;
 
 //QUERY SELECTORS
-
-var nameDisplay = document.querySelector('#nameGreeting')
-
-var presentTripsHolder = document.querySelector('#presentTripsHolder')
-var upcomingTripsHolder = document.querySelector('#upcomingTripsHolder')
-var pastTripsHolder = document.querySelector('#pastTripsCardHolder')
+var nameDisplay = document.querySelector('#nameGreeting');
+var presentTripsHolder = document.querySelector('#presentTripsHolder');
+var upcomingTripsHolder = document.querySelector('#upcomingTripsHolder');
+var pastTripsHolder = document.querySelector('#pastTripsCardHolder');
 var totalForPastTrips = document.querySelector('#pastTripsSpent');
-var pendingTripsHolder = document.querySelector('#pendingTripsHolder')
-
-var submitButton = document.querySelector('#requestTripsDepartureButton')
-
-
+var pendingTripsHolder = document.querySelector('#pendingTripsHolder');
+var submitButton = document.querySelector('#requestTripsDepartureButton');
 
 //EVENT LISTENERS
 window.addEventListener('load', getGlobalDataFromAPI);
 submitButton.addEventListener("click", getInputData);
 
-
 //EVENT HANDLERS
-
 function getGlobalDataFromAPI() {
   var travelersPromise = getTravelers();
   var tripsPromise = getTrips();
@@ -96,7 +76,6 @@ function displayPresentTrips() {
 
 function displayUpcomingTrips() {
   let upcomingTrips = allTripInstances.upcomingTrips;
-
   if(upcomingTrips.length === 0) {
     upcomingTripsHolder.innerHTML += `<div class="trip-card">
       <p class="no-trips">Currently there are no upcoming trips</p>
@@ -120,7 +99,6 @@ function displayUpcomingTrips() {
 function displayPendingTrips() {
   pendingTripsHolder.innerHTML = '';
   let pendingTrips = allTripInstances.pendingTrips;
-
   if(pendingTrips.length === 0) {
     pendingTripsHolder.innerHTML += `<div class="trip-card">
       <p class="no-trips">Currently there are no pending trips</p>
@@ -159,14 +137,11 @@ function displayPastTrips() {
       <p> Trip Duration: ${trip.duration} days</p>
       </div>`;
   });
-
   totalForPastTrips.innerHTML += `$${allTripInstances.getCostOfApprovedTrips()}`;
-
 }
 
 function assignDropDownValues() {
   const dropdown = document.querySelector('#requestTripsDestinationDropdown');
-
   globalDestinations.destinations.forEach((destination) => {
     dropdown.innerHTML += `<option value="${destination.id}">${destination.destination}</option>`
   })
@@ -185,7 +160,6 @@ function getInputData() {
   let dataToTransmit = {id: globalTrips.trips.length + 1, userID: currentTraveler.id, destinationID: Number(destination),
     travelers: numberOfTravelers, date: formattedArrival, duration: duration,
     status: 'pending', suggestedActivities: []};
-
   submitNewTrip(dataToTransmit);
 }
 

@@ -15,7 +15,7 @@ class Trips{
     this.getPendingTrips();
     this.getPastTrips();
     this.getUpcomingTrips();
-  }
+  };
 
   getTripInstances() {
     this.trips = this.getTravelerTrips()
@@ -52,7 +52,6 @@ class Trips{
 
   getCostOfApprovedTrips() {
     const currentYear = new Date().getFullYear();
-
     let approvedTrips = this.trips.filter(trip => {
       return (trip.status === "approved" && new Date(trip.date).getFullYear() === currentYear);
     });

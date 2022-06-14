@@ -3,27 +3,24 @@ body {
   height: 100%;
   width: 100%;
   background-color: #d3d3d3;
+  font-family: 'Lexend Giga', sans-serif;
 }
 
 h1 {
   text-align: center;
-  font-family: 'Lexend Giga', sans-serif;
   font-weight: bold;
-  font-size: 40px;
+  font-size: 43px;
 }
 
 h2 {
-  font-family: 'Lexend Giga', sans-serif;
   font-size: 20px;
 }
 
 h3, h4 {
-  font-family: 'Lexend Giga', sans-serif;
   font-size: 30px;
 }
 
 p {
-  font-family: 'Lexend Giga', sans-serif;
   font-size: 15px;
 }
 
@@ -35,7 +32,6 @@ main {
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
-  font-family: 'Lexend Giga', sans-serif;
 }
 
 .form-row {
@@ -98,7 +94,6 @@ main {
 .trip-image {
   width: 280px;
   height: 210px;
-  margin: 0 auto;
 }
 
 #pastTripsCardHolder, #pastTrips {
