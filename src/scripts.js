@@ -76,19 +76,22 @@ function showTraveler() {
 function displayPresentTrips() {
   if (allTripInstances.presentTrips.length === 0) {
     presentTripsHolder.innerHTML += `<div class="trip-card">
-      <h3>Currently there are no present trips</h3>
+      <p class="no-trips">Currently there are no present trips</p>
+      <img src="https://images.unsplash.com/photo-1622967024058-afd7efe8a095?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1744&q=80"
+      alt="A worn yellow suitcase sits on a cobblestone path" class="trip-image">
     </div>`;
     return;
   }
 
   allTripInstances.presentTrips.forEach(trip => {
     presentTripsHolder.innerHTML += `<div class="trip-card">
-      <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
+      <p class="destination-name"> Destination: <br> ${trip.destinationObj.destination}</p>
+      <img src="${trip.destinationObj.image}" alt="${trip.destinationObj.alt}" class="trip-image">
+      <p> Start Date: ${new Date(trip.date).toLocaleDateString()}</p>
+      <p> Trip Duration: ${trip.duration} days</p>
       <p> Number of Travelers: ${trip.travelers} </p>
       </div>`;
   });
-
 }
 
 function displayUpcomingTrips() {
@@ -96,19 +99,22 @@ function displayUpcomingTrips() {
 
   if(upcomingTrips.length === 0) {
     upcomingTripsHolder.innerHTML += `<div class="trip-card">
-      <h3>Currently there are no upcoming trips</h3>
+      <p class="no-trips">Currently there are no upcoming trips</p>
+      <img src="https://images.unsplash.com/photo-1584967918940-a7d51b064268?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+      alt="A travel journal and pencil sits in the center of a yellowing map, along with a camera, magnifying class, and coffee mug" class="trip-image">
     </div>`;
     return;
   }
   upcomingTrips.forEach(trip => {
     upcomingTripsHolder.innerHTML += `<div class="trip-card">
-      <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
+      <p class="destination-name"> Destination: <br> ${trip.destinationObj.destination}</p>
+      <img src="${trip.destinationObj.image}" alt="${trip.destinationObj.alt}" class="trip-image">
+      <p> Start Date: ${new Date(trip.date).toLocaleDateString()}</p>
+      <p> Trip Duration: ${trip.duration} days</p>
       <p> Number of Travelers: ${trip.travelers} </p>
       <p> Status: ${trip.status}</p>
       </div>`;
   });
-
 }
 
 function displayPendingTrips() {
@@ -117,14 +123,19 @@ function displayPendingTrips() {
 
   if(pendingTrips.length === 0) {
     pendingTripsHolder.innerHTML += `<div class="trip-card">
-      <h3>Currently there are no pending trips</h3>
+      <p class="no-trips">Currently there are no pending trips</p>
+      <img src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+      alt="We see a person's back as they view lit up departure and arrival board at the airport" class="trip-image">
     </div>`;
     return;
   }
+
   pendingTrips.forEach(trip => {
     pendingTripsHolder.innerHTML += `<div class="trip-card">
-      <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
+      <p class="destination-name"> Destination: <br> ${trip.destinationObj.destination}</p>
+      <img src="${trip.destinationObj.image}" alt="${trip.destinationObj.alt}" class="trip-image">
+      <p> Start Date: ${new Date(trip.date).toLocaleDateString()}</p>
+      <p> Trip Duration: ${trip.duration} days</p>
       <p> Number of Travelers: ${trip.travelers} </p>
       <p> Status: ${trip.status} </p>
       <p> Estimated Cost: $${trip.calculateCost()} </p>
@@ -136,18 +147,20 @@ function displayPastTrips() {
   let pastTrips = allTripInstances.pastTrips;
   if (pastTrips.length === 0) {
     pastTripsHolder.innerHTML += `<div class="bottom-trip-card">
-      <h3>Currently there are no past trips</h3>
+      <p class="no-trips">Currently there are no past trips</p>
     </div>`;
     return;
   }
   pastTrips.forEach(trip => {
     pastTripsHolder.innerHTML += `<div class="bottom-trip-card">
-      <p> Destination: ${trip.destinationObj.destination}</p>
-      <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
+      <p class="destination-name"> Destination: <br> ${trip.destinationObj.destination}</p>
+      <img src="${trip.destinationObj.image}" alt="${trip.destinationObj.alt}" class="trip-image">
+      <p> Start Date: ${new Date(trip.date).toLocaleDateString()}</p>
+      <p> Trip Duration: ${trip.duration} days</p>
       </div>`;
   });
 
-  totalForPastTrips.innerHTML += allTripInstances.getCostOfApprovedTrips();
+  totalForPastTrips.innerHTML += `$${allTripInstances.getCostOfApprovedTrips()}`;
 
 }
 

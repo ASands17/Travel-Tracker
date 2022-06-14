@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="preconnect" href="https://fonts.googleapis.com"> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@200;500;900&display=swap" rel="stylesheet">
 
 
   <title>Travel Tracker</title>
 </head>
   <body>
-    <!-- <img src="./images/turing-logo.png" alt="turing logo"> -->
   <h1>Travel Tracker</h1>
   <h2 class="name-greeting" id="nameGreeting"> Hello, </h2>
   <main>
     <section class="request-trips form-card" id="requestTrips">
-    <h2 class="request-trips-header" id="requestTripsHeader"> Add New Trip! </h2>
+    <h3 class="request-trips-header" id="requestTripsHeader"> Where are you off to next? </h3>
     <div class="form-row">
         <div class="form-input-group">
           <label class="request-trips-destination" id="requestTripsDestination">Select Destination:</label>
@@ -37,30 +40,30 @@
       <button class="request-trips-departure-button" id="requestTripsDepartureButton"> Submit Trip! </button>
     </div>
     </section>
-    <div class="card" id="leftCard">
-      <section class= "pending-trips" id="pendingTrips">
-        <h2 class="pending-trips-header" id="pendingTripsHeader"> Pending Trips </h2>
-        <div class="pending-trips-holder" id="pendingTripsHolder"></div>
-      </section>
-
-
-    </div>
-    <div class="card" id="middleLeftCard">
-      <section class="upcoming-trips" id="upcomingTrips">
-        <h2 class="upcoming-trips-header" id="upcomingTripsHeader"> Upcoming Trips </h2>
-        <div class="upcoming-trips-holder" id="upcomingTripsHolder"></div>
-      </section>
-    </div>
-    <div class="card" id="middleRightCard">
-      <section class="present-trips" id="presentTrips">
-        <h2 class="present-trips-header" id="presentTripsHeader"> Present Trips </h2>
-        <div class="present-trips-holder" id="presentTripsHolder"></div>
-      </section>
+    <div class="card-row">
+      <div class="card" id="leftCard">
+        <section class= "pending-trips" id="pendingTrips">
+          <h4 class="pending-trips-header" id="pendingTripsHeader"> Pending Trips </h4>
+          <div class="pending-trips-holder" id="pendingTripsHolder"></div>
+        </section>
+      </div>
+      <div class="card" id="middleLeftCard">
+        <section class="upcoming-trips" id="upcomingTrips">
+          <h4 class="upcoming-trips-header" id="upcomingTripsHeader"> Upcoming Trips </h4>
+          <div class="upcoming-trips-holder" id="upcomingTripsHolder"></div>
+        </section>
+      </div>
+      <div class="card" id="middleRightCard">
+        <section class="present-trips" id="presentTrips">
+          <h4 class="present-trips-header" id="presentTripsHeader"> Present Trips </h4>
+          <div class="present-trips-holder" id="presentTripsHolder"></div>
+        </section>
+      </div>
     </div>
     <div class="bottom-card" id="bottomCard">
 
       <section class="past-trips" id="pastTrips">
-        <h2 class="past-trips-header" id="pastTripsHeader"> Past Trips </h2>
+        <h4 class="past-trips-header" id="pastTripsHeader"> Past Trips </h4>
         <p class= "past-trips-spent" id="pastTripsSpent"> Yearly Amount Spent: </p>
         <div class= "past-trips-card-holder" id="pastTripsCardHolder"></div>
       </section>

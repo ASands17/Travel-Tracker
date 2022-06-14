@@ -7,6 +7,24 @@ body {
 
 h1 {
   text-align: center;
+  font-family: 'Lexend Giga', sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+h2 {
+  font-family: 'Lexend Giga', sans-serif;
+  font-size: 20px;
+}
+
+h3, h4 {
+  font-family: 'Lexend Giga', sans-serif;
+  font-size: 30px;
+}
+
+p {
+  font-family: 'Lexend Giga', sans-serif;
+  font-size: 15px;
 }
 
 main {
@@ -17,6 +35,7 @@ main {
   width: 100%;
   flex-direction: row;
   flex-wrap: wrap;
+  font-family: 'Lexend Giga', sans-serif;
 }
 
 .form-row {
@@ -26,10 +45,12 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  font-size: 20px;
 }
 
 .form-row-bottom {
   justify-content: flex-end;
+  margin: 10px 0;
 }
 
 .card {
@@ -54,26 +75,56 @@ main {
 
 .trip-card {
   width: 90%;
+  height: 500px;
 }
 
 .bottom-trip-card {
   display: inline-block;
   width: 22%;
+  height: 430px;
   min-width: 22%;
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .form-card {
   background-color: white;
   width: 100%;
   margin-left: 15px;
-  margin-right: 15px
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.trip-image {
+  width: 280px;
+  height: 210px;
+  margin: 0 auto;
 }
 
 #pastTripsCardHolder, #pastTrips {
   width: 100%;
 }
-#pastTripsHeader {
+#pastTripsHeader, #pastTripsSpent {
   padding-left: 20px
+}
+
+#requestTripsHeader, #pastTrips {
+  padding-left: 15px;
+}
+
+.card-row {
+  display: inline-flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-left: 15px;
+}
+
+.trip-card-no-content {
+  height: auto;
+  width: 280px;
+}
+
+.destination-name, .no-trips {
+  height: 75px;
+  font-size: 20px;
 }
