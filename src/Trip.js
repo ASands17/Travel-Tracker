@@ -50,7 +50,7 @@ class Trip {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     let tripDate = new Date(this.date);
-    if (today < tripDate && this.status != "pending") {
+    if (today < tripDate && this.status !== "pending") {
       this.isUpcoming = true;
     } else {
       this.isUpcoming = false;
