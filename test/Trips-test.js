@@ -861,8 +861,8 @@ describe("Trips", () => {
   });
 
   it("should get all of a traveler's present trips", function () {
-    // trips1.presentTrips = null;
-    // expect(trips1.presentTrips).to.equal(null))
+    trips1.presentTrips = null;
+    expect(trips1.presentTrips).to.equal(null);
     trips1.getPresentTrips();
     expect(trips1.presentTrips).to.deep.equal([
       {
@@ -971,8 +971,8 @@ describe("Trips", () => {
   });
 
   it("should get all of a traveler's pending trips", function () {
-    // trips1.pendingTrips = null;
-    // expect(trips1.pendingTrips).to.equal(null))
+    trips1.pendingTrips = null;
+    expect(trips1.pendingTrips).to.equal(null);
     trips1.getPendingTrips();
     expect(trips1.pendingTrips).to.deep.equal([
       {
@@ -1081,6 +1081,9 @@ describe("Trips", () => {
   });
 
   it("should get all of a traveler's past trips", function () {
+    trips3.pastTrips = null;
+    expect(trips3.pastTrips).to.equal(null);
+    trips3.getPastTrips();
     expect(trips3.pastTrips).to.deep.equal([
       {
       "id": 3,
@@ -1188,6 +1191,9 @@ describe("Trips", () => {
   });
 
   it("should get all of a traveler's upcoming trips", function () {
+    trips3.upcomingTrips = null;
+    expect(trips3.upcomingTrips).to.equal(null);
+    trips3.getUpcomingTrips();
     expect(trips3.upcomingTrips).to.deep.equal([
       {
       "id": 6,
