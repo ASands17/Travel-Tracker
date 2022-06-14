@@ -8,12 +8,13 @@ body {
 
 h1 {
   text-align: center;
-  font-weight: bold;
+  font-weight: bolder;
   font-size: 43px;
 }
 
 h2 {
   font-size: 20px;
+  padding-left: 15px;
 }
 
 h3, h4 {
@@ -70,12 +71,14 @@ main {
 }
 
 .trip-card {
+  text-align: center;
   width: 90%;
   height: 500px;
 }
 
 .bottom-trip-card {
   display: inline-block;
+  text-align: center;
   width: 22%;
   height: 430px;
   min-width: 22%;
@@ -92,6 +95,11 @@ main {
 }
 
 .trip-image {
+  width: 360px;
+  height: 210px;
+}
+
+.past-trips-image {
   width: 280px;
   height: 210px;
 }
@@ -105,6 +113,15 @@ main {
 
 #requestTripsHeader, #pastTrips {
   padding-left: 15px;
+}
+
+#requestTripsDepartureButton, #requestTripsDestinationDropdown,
+#requestTripsArrivalInput, #requestTripsDepartureInput, #requestTripsTravelersInput {
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 15px;
+  padding: 5px;
+  border: solid 1px;
 }
 
 .card-row {
