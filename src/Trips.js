@@ -21,25 +21,34 @@ class Trips{
     this.trips = this.getTravelerTrips()
       .map(tripObj => new Trip(tripObj, this.allDestinationData));
     return this.trips;
-  }
+  };
 
   getTravelerTrips() {
     let travelerTrips = this.allTrips.filter(trip => {
       return trip.userID === this.travelerId;
     })
     return travelerTrips;
-  }
+  };
 
-  // getCostOfApprovedTrips() {
-  //   let approvedTrips = this.trips.filter(trip => {
-  //     return trip.status === "approved";
-  //   });
-  //     let totalCost = approvedTrips.reduce((sum, trip) => {
-  //       sum += trip.calculateCost();
-  //       return sum;
-  //     }, 0);
-  //   return totalCost;
-  // }
+  getPresentTrips() {
+    this.presentTrips = this.trips.filter((trip) => {
+      return trip.isCurrent === true;
+    })
+  };
+
+  getPendingTrips() {
+    this.pendingTrips = this.trips.filter(instance => instance.status === "pending");
+  };
+
+  getPastTrips() {
+    this.pastTrips = this.trips.filter(instance => instance.isPast === true);
+  };
+
+  getUpcomingTrips() {
+    this.upcomingTrips = this.trips.filter((trip) => {
+      return trip.isUpcoming === true;
+    })
+  };
 
   getCostOfApprovedTrips() {
     const currentYear = new Date().getFullYear();
@@ -47,37 +56,12 @@ class Trips{
     let approvedTrips = this.trips.filter(trip => {
       return (trip.status === "approved" && new Date(trip.date).getFullYear() === currentYear);
     });
-
-
       let totalCost = approvedTrips.reduce((sum, trip) => {
         sum += trip.calculateCost();
         return sum;
       }, 0);
     return totalCost;
-  }
-
-  // REFACTORY
-
-  getPresentTrips() {
-    this.presentTrips = this.trips.filter((trip) => {
-      return trip.isCurrent === true;
-    })
-  }
-
-  getUpcomingTrips() {
-    console.log(this.trips)
-    this.upcomingTrips = this.trips.filter((trip) => {
-      return trip.isUpcoming === true;
-    })
-  }
-
-  getPendingTrips() {
-    this.pendingTrips = this.trips.filter(instance => instance.status === "pending");
-  }
-
-  getPastTrips() {
-    this.pastTrips = this.trips.filter(instance => instance.isPast === true);
-  }
-}
+  };
+};
 
 export default Trips;
