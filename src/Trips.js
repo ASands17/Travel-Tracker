@@ -41,9 +41,13 @@ class Trips{
   // }
 
   getCostOfApprovedTrips() {
+    const currentYear = new Date().getFullYear();
+
     let approvedTrips = this.trips.filter(trip => {
-      return trip.status === "approved";
+      return (trip.status === "approved" && new Date(trip.date).getFullYear() === currentYear);
     });
+
+
       let totalCost = approvedTrips.reduce((sum, trip) => {
         sum += trip.calculateCost();
         return sum;

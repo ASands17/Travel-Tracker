@@ -18,9 +18,9 @@ describe("Trips", () => {
       "userID": 1,
       "destinationID": 49,
       "travelers": 1,
-      "date": "2022/09/16",
+      "date": "2021/09/16",
       "duration": 8,
-      "status": "pending",
+      "status": "approved",
       "suggestedActivities": []
       },
       {
@@ -223,9 +223,9 @@ describe("Trips", () => {
       "userID": 1,
       "destinationID": 49,
       "travelers": 1,
-      "date": "2022/09/16",
+      "date": "2021/09/16",
       "duration": 8,
-      "status": "pending",
+      "status": "approved",
       "suggestedActivities": []
       },
       {
@@ -330,9 +330,9 @@ describe("Trips", () => {
       "id": 1,
       "destinationID": 49,
       "travelers": 1,
-      "date": "2022/09/16",
+      "date": "2021/09/16",
       "duration": 8,
-      "status": "pending",
+      "status": "approved",
       "destinationObj":
         {
         "id": 49,
@@ -344,7 +344,7 @@ describe("Trips", () => {
         },
       "isCurrent": false,
       "isUpcoming": false,
-      "isPast": false,
+      "isPast": true,
       "destinationData" : [
         {
         "id": 49,
