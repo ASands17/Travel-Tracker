@@ -93,7 +93,8 @@ function displayPresentTrips() {
 
 function displayUpcomingTrips() {
   let upcomingTrips = allTripInstances.upcomingTrips;
-  if(!upcomingTrips) {
+
+  if(upcomingTrips.length === 0) {
     upcomingTripsHolder.innerHTML += `<div class="trip-card">
       <h3>Currently there are no upcoming trips</h3>
     </div>`;
@@ -126,7 +127,7 @@ function displayPendingTrips() {
       <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
       <p> Number of Travelers: ${trip.travelers} </p>
       <p> Status: ${trip.status} </p>
-      <p> Estimated Cost: ${trip.calculateCost()} </p>
+      <p> Estimated Cost: $${trip.calculateCost()} </p>
       </div>`;
   });
 }
@@ -134,13 +135,13 @@ function displayPendingTrips() {
 function displayPastTrips() {
   let pastTrips = allTripInstances.pastTrips;
   if (pastTrips.length === 0) {
-    pastTripsHolder.innerHTML += `<div class="trip-card">
+    pastTripsHolder.innerHTML += `<div class="bottom-trip-card">
       <h3>Currently there are no past trips</h3>
     </div>`;
     return;
   }
   pastTrips.forEach(trip => {
-    pastTripsHolder.innerHTML += `<div class="trip-card">
+    pastTripsHolder.innerHTML += `<div class="bottom-trip-card">
       <p> Destination: ${trip.destinationObj.destination}</p>
       <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
       </div>`;

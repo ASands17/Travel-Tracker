@@ -1,11 +1,8 @@
-* {
-  border: solid black 1px;
-}
-
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
-  height: 100vh;
-  width: 100vw;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #d3d3d3;
 }
 
 h1 {
@@ -18,15 +15,65 @@ main {
   align-items: baseline;
   height: 100%;
   width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.left-card, .middle-left-card, .middle-right-card, .right-card {
+.form-row {
+  padding-left: 15px;
+  padding-right: 15px;
+  width: 95%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.form-row-bottom {
+  justify-content: flex-end;
+}
+
+.card {
   height: 80%;
-  width: 22%;
+  width: 32%;
+  min-width: 32%;
+}
+
+.bottom-card {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.trip-card, .bottom-trip-card {
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  padding: 15px;
 }
 
 .trip-card {
+  width: 90%;
+}
+
+.bottom-trip-card {
+  display: inline-block;
+  width: 22%;
+  min-width: 22%;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.form-card {
   background-color: white;
-  border-radius: 5px;
-  margin-bottom: 15px
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px
+}
+
+#pastTripsCardHolder, #pastTrips {
+  width: 100%;
+}
+#pastTripsHeader {
+  padding-left: 20px
 }
