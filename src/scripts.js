@@ -126,6 +126,7 @@ function displayPendingTrips() {
       <p> Trip Dates: ${new Date(trip.date).toLocaleDateString()} </p>
       <p> Number of Travelers: ${trip.travelers} </p>
       <p> Status: ${trip.status} </p>
+      <p> Estimated Cost: ${trip.calculateCost()} </p>
       </div>`;
   });
 }
@@ -175,7 +176,7 @@ function getInputData() {
 }
 
 function submitNewTrip(newTrip) {
-  addNewTrip(newTrip).then(() => {
+  addNewTrip(newTrip).then((newRes) => {
     getTrips().then((res) => {
       globalTrips = res;
       allTripInstances.allTrips = globalTrips.trips;

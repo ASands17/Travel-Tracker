@@ -78,7 +78,6 @@ class Trips{
   getPastTrips() {
     this.pastTrips = this.trips.filter(instance => instance.isPast === true);
   }
-
 }
 
 export default Trips;
