@@ -740,7 +740,7 @@ describe("Trips", () => {
     ]);
   });
 
-  it("should get all of the destination data", function () {
+  it("should get all of the destination data", () => {
     expect (trips1.allDestinationData).to.deep.equal([
       {
       "id": 49,
@@ -825,7 +825,7 @@ describe("Trips", () => {
     ])
   });
 
-  it("should get all of a Traveler's trips by ID", function () {
+  it("should get all of a Traveler's trips by ID", () => {
     expect(trips3.getTravelerTrips()).to.deep.equal([
       {
       "id": 3,
@@ -860,7 +860,7 @@ describe("Trips", () => {
     ])
   });
 
-  it("should get all of a traveler's present trips", function () {
+  it("should get all of a traveler's present trips", () => {
     trips1.presentTrips = null;
     expect(trips1.presentTrips).to.equal(null);
     trips1.getPresentTrips();
@@ -970,7 +970,7 @@ describe("Trips", () => {
     ]);
   });
 
-  it("should get all of a traveler's pending trips", function () {
+  it("should get all of a traveler's pending trips", () => {
     trips1.pendingTrips = null;
     expect(trips1.pendingTrips).to.equal(null);
     trips1.getPendingTrips();
@@ -1080,7 +1080,7 @@ describe("Trips", () => {
     ]);
   });
 
-  it("should get all of a traveler's past trips", function () {
+  it("should get all of a traveler's past trips", () => {
     trips3.pastTrips = null;
     expect(trips3.pastTrips).to.equal(null);
     trips3.getPastTrips();
@@ -1190,7 +1190,7 @@ describe("Trips", () => {
     ]);
   });
 
-  it("should get all of a traveler's upcoming trips", function () {
+  it("should get all of a traveler's upcoming trips", () => {
     trips3.upcomingTrips = null;
     expect(trips3.upcomingTrips).to.equal(null);
     trips3.getUpcomingTrips();
@@ -1300,7 +1300,7 @@ describe("Trips", () => {
     ]);
   });
 
-  it("should calculate total cost approved trips", function () {
+  it("should calculate total cost approved trips", () => {
     expect(trips1.getCostOfApprovedTrips()).to.equal(9856);
     expect(trips3.getCostOfApprovedTrips()).to.equal(6853);
   });

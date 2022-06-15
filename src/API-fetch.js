@@ -1,5 +1,4 @@
 //FETCH REQUESTS GET
-
 export function getTrips() {
   return fetch('http://localhost:3001/api/v1/trips')
   .then(res => res.json())
@@ -18,6 +17,12 @@ export function getTravelers() {
   .catch(error => alert('ERROR'));
 };
 
+export function getTravelerById(travelerId) {
+  return fetch(`http://localhost:3001/api/v1/travelers/${travelerId}`)
+  .then(res => res.json())
+  .catch(error => alert('ERROR'));
+};
+
 export function addNewTrip(dataToTransmit) {
   var response = fetch('http://localhost:3001/api/v1/trips', {
   method: 'POST',
@@ -26,7 +31,7 @@ export function addNewTrip(dataToTransmit) {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify(dataToTransmit)
-}).then(res => {return res.json()})
-.catch(error => alert('ERROR'));
-  return response;
+  }).then(res => {return res.json()})
+  .catch(error => alert('ERROR'));
+    return response;
 };
