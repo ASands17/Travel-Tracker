@@ -31,12 +31,11 @@ Travel tracker allows you to see your present, upcoming, past, and present trips
 
 ### Features
 - User can log into their account using their unique username and a password.
+![travel-tracker-login-gif](https://user-images.githubusercontent.com/93043035/173721846-e6b69534-7071-4e04-969b-e8d318a0ed12.gif)
 - User can see all present, upcoming, current, and pending trips.
-<!-- ![Create New Card](/assets/Gif%201%20ideabox.gif) -->
 - User can see their travel spending for this calendar year.
-<!-- ![Favorite Ideas](/assets/Gif%202%20ideabox.gif) -->
 - User can request a new trip, and see a price estimation for the trip
-<!-- ![Search Ideas](/assets/Gif%203%20ideabox.gif) -->
+![travel-tracker-overview-2](https://user-images.githubusercontent.com/93043035/173722958-d0f99b10-a2d0-4669-aecb-1b081f14d577.gif)
 
 ### Reflection
 - The most challenging part of this project was having so much freedom to structure my classes. I struggled with the variety of choices I had at first. However, I tried to keep in mind that I could change my class structures if I decided that I could write them a different way. The original class structure that I had in mind ended up being quite different from the one I have now. I definitely had to push myself to pivot instead of holding onto previous ideas that just weren’t working. This project in particular was a good exercise in looking forward, and not being afraid to change things up in my code.
