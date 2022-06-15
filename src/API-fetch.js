@@ -1,5 +1,4 @@
 //FETCH REQUESTS GET
-
 export function getTrips() {
   return fetch('http://localhost:3001/api/v1/trips')
   .then(res => res.json())
@@ -32,7 +31,7 @@ export function addNewTrip(dataToTransmit) {
     'Content-Type': 'application/json',
   },
   body: JSON.stringify(dataToTransmit)
-}).then(res => {return res.json()})
-.catch(error => alert('ERROR'));
-  return response;
+  }).then(res => {return res.json()})
+  .catch(error => alert('ERROR'));
+    return response;
 };

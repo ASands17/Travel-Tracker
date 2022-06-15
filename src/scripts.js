@@ -35,16 +35,13 @@ function getGlobalDataFromAPI() {
     globalTravelers = values[0];
     globalTrips = values[1];
     globalDestinations = values[2];
-  })
+  });
 }
 
 //FUNCTIONS
-function getRandomTraveler(allTravelers) {
-  return allTravelers.travelers[Math.floor(Math.random()*allTravelers.travelers.length)];
-}
-
 function showTraveler(currentTraveler) {
-  nameDisplay.innerHTML += currentTraveler.name;
+  let traveler = new Traveler(currentTraveler)
+  nameDisplay.innerHTML += traveler.getTravelerName();
   allTripInstances = new Trips(currentTraveler.id, globalTrips.trips, globalDestinations.destinations);
   displayPresentTrips();
   displayPastTrips();
@@ -106,7 +103,6 @@ function displayPendingTrips() {
     </div>`;
     return;
   }
-
   pendingTrips.forEach(trip => {
     pendingTripsHolder.innerHTML += `<div class="trip-card">
       <p class="destination-name" tabindex="0"> Destination: <br> ${trip.destinationObj.destination}</p>
@@ -145,7 +141,7 @@ function assignDropDownValues() {
   const dropdown = document.querySelector('#requestTripsDestinationDropdown');
   globalDestinations.destinations.forEach((destination) => {
     dropdown.innerHTML += `<option value="${destination.id}">${destination.destination}</option>`
-  })
+  });
 }
 
 function getInputData() {
@@ -195,5 +191,4 @@ function login() {
     form.classList.add("hidden");
     main.classList.remove("hidden");
   });
-
 }
