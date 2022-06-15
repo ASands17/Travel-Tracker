@@ -145,18 +145,42 @@ function assignDropDownValues() {
 }
 
 function getInputData() {
-  let arrivalDate = document.getElementById('requestTripsArrivalInput').value;
-  let departureDate = document.getElementById('requestTripsDepartureInput').value;
-  let destination = document.getElementById('requestTripsDestinationDropdown').value;
-  let numberOfTravelers = document.getElementById('requestTripsTravelersInput').value
-  const arriveDate = new Date(arrivalDate);
-  const departDate = new Date(departureDate);
+  let arrivalDate = document.getElementById('requestTripsArrivalInput');
+  let departureDate = document.getElementById('requestTripsDepartureInput');
+  let destination = document.getElementById('requestTripsDestinationDropdown');
+  let numberOfTravelers = document.getElementById('requestTripsTravelersInput');
+
+
+  if (departureDate.value === '') {
+    window.alert("Departure Date Must Have a Valid Date Selected");
+  }
+  if (arrivalDate.value === '') {
+    window.alert("Arrival Date Must Have a Valid Date Selected");
+  }
+  if (destination.value === '') {
+    window.alert("You Must Select a Destination");
+  }
+  if (numberOfTravelers.value === '') {
+    window.alert("Please Enter the Number of Travelers");
+  }
+
+  if(numberOfTravelers.value === '' || destination.value === '' || arrivalDate.value === '' || departureDate.value === '') {
+    return;
+  }
+
+  const arriveDate = new Date(arrivalDate.value);
+  const departDate = new Date(departureDate.value);
   const diffTime = Math.abs(departDate - arriveDate);
   const duration = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-  const formattedArrival = new Date(arrivalDate).toLocaleDateString('en-ZA')
-  let dataToTransmit = {id: globalTrips.trips.length + 1, userID: currentTraveler.id, destinationID: Number(destination),
-    travelers: numberOfTravelers, date: formattedArrival, duration: duration,
+  const formattedArrival = new Date(arrivalDate.value).toLocaleDateString('en-ZA')
+  let dataToTransmit = {id: globalTrips.trips.length + 1, userID: currentTraveler.id, destinationID: Number(destination.value),
+    travelers: numberOfTravelers.value, date: formattedArrival, duration: duration,
     status: 'pending', suggestedActivities: []};
+
+  numberOfTravelers.value = "";
+  destination.value = "";
+  arrivalDate.value = "";
+  departureDate.value = "";
   submitNewTrip(dataToTransmit);
 }
 
@@ -186,7 +210,6 @@ function login() {
   const travelerId = email.replace(/traveler/g, '');
   getTravelerById(travelerId).then((res) => {
     currentTraveler = res;
-    console.log(currentTraveler)
     showTraveler(currentTraveler);
     form.classList.add("hidden");
     main.classList.remove("hidden");

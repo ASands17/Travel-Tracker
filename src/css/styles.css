@@ -148,3 +148,36 @@ main {
 .error {
   color: red;
 }
+
+.login-form-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.login-form {
+  width: 30%;
+  background-color: white;
+  border-radius: 5px;
+}
+
+.email-input, .password-input {
+  display: block;
+  width: 90%;
+  margin: 2% auto;
+}
+
+.email-label {
+  margin-top: 2%;
+}
+
+.password-label, .email-label {
+  display: block;
+  margin-left: 5%;
+}
+
+#signInSubmit {
+  float: right;
+  margin-right: 5%;
+  margin-bottom: 5%;
+}

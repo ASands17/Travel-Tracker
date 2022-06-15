@@ -11,12 +11,14 @@
 </head>
   <body>
   <h1 tabindex="0">Travel Tracker</h1>
-  <div class="login-form" id="loginForm">
-    <label class="email-label">Username</label>
-    <input class="email-input" id="emailInput" type="email" required/>
-    <label class="password-label">Password</label>
-    <input class="password-input" id="passwordInput"  type="password" required/>
-    <button id="signInSubmit" type="button" name="button">Sign In</button>
+  <div class="login-form-row">
+    <div class="login-form" id="loginForm">
+      <label class="email-label">Username</label>
+      <input class="email-input" id="emailInput" type="email" required/>
+      <label class="password-label">Password</label>
+      <input class="password-input" id="passwordInput"  type="password" required/>
+      <button id="signInSubmit" type="button" name="button">Sign In</button>
+    </div>
   </div>
   <div class="hidden" id="mainContainer">
     <h2 class="name-greeting" id="nameGreeting" tabindex="0"> Hello, </h2>
@@ -26,7 +28,9 @@
       <div class="form-row">
           <div class="form-input-group">
             <label class="request-trips-destination" id="requestTripsDestination" tabindex="0">Select Destination:</label>
-            <select class="request-trips-destination-dropdown" id="requestTripsDestinationDropdown"></select>
+            <select class="request-trips-destination-dropdown" id="requestTripsDestinationDropdown">
+              <option value="">Please Select a Destination</option>
+            </select>
           </div>
           <div class="form-input-group">
             <label class="request-trips-arrival" id="requestTripsArrival" tabindex="0">Arrival Date:</label>
