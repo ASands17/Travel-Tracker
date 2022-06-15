@@ -1,100 +1,55 @@
-#Amanda's Travel Tracker
-#A Tracker for Travelers
+# 🛫 Travel Tracker 🛬
 
-## Clone This Repo
 
-That's right, _clone_ not fork. You will use this repo multiple times, but you can only fork a repository once. So here is what you need to do to clone the repo and still be able to push changes to your repo:
+## Table of Contents
+- [Introduction](#introduction)
+- [Technologies](#technologies)
+- [Set Up](#set-up)
+- [Features](#features)
+- [Reflection](#reflection)
+- [Future Features](#future-features)
+- [Contributors](#contributors)
+- [Project Specifications](#project-specifications)
 
-1. Clone down this repo. Since you don't want to name your project "webpack-starter-kit", you can use an optional argument when you run `git clone` (you replace the `[...]` with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Remove the default remote: `git remote rm origin` (notice that `git remote -v` not gives you back nothing)
-1. Create a new repo on GitHub with the name of `[what you want to name the repo]` to be consistent with naming
-1. Copy the address that you would use to clone down this repo - something like `git@github.com:...`
-1. Add this remote to your cloned down repo: `git remote add origin [address you copied in the previous step]` - do not include the brackets
+### Introduction
+Are you always looking for the chance to get away? Do you enjoy traipsing the globe, but find yourself short on time and energy? It can be quite time-consuming to find plane tickets and lodging. That’s why you should book with Travel Tracker!
 
-Now try to commit something (just add a line in the README) and push it up to your new repo. If everything is setup correctly, you should see the changes on GitHub.
+Travel tracker allows you to see your present, upcoming, past, and present trips at a glance. Once you log in, you can view your traveler dashboard. Travel Tracker displays not only your trips, but also the amount the user has spent on trips this year. The user can also request a new trip by entering their trip’s start date, duration, and location. Once your trip is approved by the Travel Tracker team, it will show in your upcoming trips, and you’ll be on your way!
 
-## Setup
+### Technologies
+- JavaScript
+- HTML
+- CSS
+- Mocha/Chai Testing
+- API fetch GET and POST calls
 
-After one person has gone through the steps of cloning down this repo and editing the remote, everyone should clone down the repo.
+### Set Up
+1.  Clone this [repository](https://github.com/ASands17/Travel-Tracker).
+2. `cd` into the directory.
+3. Run `npm start`.
+4. Go to http://localhost:8080/ to view the site.
 
-Then install the library dependencies. Run:
+### Features
+- User can log into their account using their unique username and a password.
+- User can see all present, upcoming, current, and pending trips.
+<!-- ![Create New Card](/assets/Gif%201%20ideabox.gif) -->
+- User can see their travel spending for this calendar year.
+<!-- ![Favorite Ideas](/assets/Gif%202%20ideabox.gif) -->
+- User can request a new trip, and see a price estimation for the trip
+<!-- ![Search Ideas](/assets/Gif%203%20ideabox.gif) -->
 
-```bash
-npm install
-```
+### Reflection
+- The most challenging part of this project was having so much freedom to structure my classes. I struggled with the variety of choices I had at first. However, I tried to keep in mind that I could change my class structures if I decided that I could write them a different way. The original class structure that I had in mind ended up being quite different from the one I have now. I definitely had to push myself to pivot instead of holding onto previous ideas that just weren’t working. This project in particular was a good exercise in looking forward, and not being afraid to change things up in my code.
+-  The biggest win that I experienced while writing code for Travel Tracker was when my class structures started to come together and make sense. I feel like working with multiple classes gave me a better idea about what object oriented programming is about. Even though this was a challenge, I think I gained really great insights into why classes and methods are so powerful, and the ways they can work together.
 
-To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
 
-## Where to Add Your Code
+### Future Features
+- When the user clicks their trips, they can view information on their booked flight, as well as information about their lodging.
+- User can remove or edit upcoming or pending trips in case their plans change.
+- User can add photos to their past trips, and view their trip notes when they click the past trip cards.
 
-### JavaScript
+### Contributors
+- [Amanda Sands](https://www.linkedin.com/in/amanda-noel/)
 
-You have to be very intentional with where you add your feature code. This repo uses a tool called [webpack](https://webpack.js.org/) to combine many JavaScript files into one big file. Webpack enables you to have many, separate JavaScript files to keep your code organized and readable. Webpack expects all of your code files to be in a specific place, or else it doesn't know how to combine them all behind the scenes.
-
-**Create all of your feature code files in the `src` directory.**
-
-Since code is separated into multiple files, you need to use the `import` and `export` syntax to share code across file.
-
-Here is a video that walks through some information about [import and export](https://www.youtube.com/watch?v=_3oSWwapPKQ). There are a lot of resources out there about `import` and `export`, and resources will sometimes call them `ES6 modules`. It's something you will see in React and beyond.
-
-### HTML
-
-Add the HTML you need in the `index.html` file in the `./dist` directory. There is some boilerplate HTML that exists from the start that you can modify.
-
-### Images
-
-Add your image files in the `src/images` directory. Similar to CSS files, you need to `import` image files in the JavaScript entry file (`scripts.js`). Then go into the HTML and add an `img` element with the `src` attribute pointing to the `images` directory. There is an example in the `index.html` file for you to see.
-
-## How to View Your Code in Action
-
-In the terminal, run:
-
-```bash
-npm start
-```
-
-You will see a bunch of lines output to your terminal. One of those lines will be something like:
-
-```bash
-Project is running at http://localhost:8080/
-```
-
-Go to `http://localhost:8080/` in your browser to view your code running in the browser.
-
----
-
-## Test Files Organization
-
-Similar to feature code, your test code needs to be put in a specific place for it to run successfully.
-
-**Put all of your test files in the `test` directory.** As a convention, all test filenames should end with `-test.js`. For instance: `box-test.js`.
-
-## Running Your Tests
-
-Run your test suite using the command:
-
-```bash
-npm test
-```
-
-The test results will output to the terminal.
-
----
-
-## Linting Your Code
-
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit - the linter is still running successfully.
-
-Your linter will look at the JavaScript files you have within the `src` directory and the `test` directory.
-
-## Webpack?
-
-If you look in the `package.json` file, you'll see one of the library dependencies called `webpack`. If you're interested in learning more about what Webpack is and how it works behind the scenes, take a look through the [Webpack configuration documentation](https://webpack.js.org/concepts/).
-
-## Deploying to GitHub Pages
-
-_If you are finished with the functionality and testing of your project_, then you can consider deploying your project to the web! This way anyone can play it without cloning down your repo.
-
-[GitHub Pages](https://pages.github.com/) is a great way to deploy your project to the web. Don't worry about this until your project is free of bugs and well tested!
-
-If you _are_ done, you can follow [this procedure](./gh-pages-procedure.md) to get your project live on GitHub Pages.
+### Project Specifications
+- Project specs are located [here](https://frontend.turing.edu/projects/travel-tracker.html).
